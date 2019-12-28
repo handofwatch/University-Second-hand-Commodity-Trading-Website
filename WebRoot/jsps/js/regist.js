@@ -21,7 +21,7 @@ $(function() {
 	/*
 	 * 3. 输入框得到焦点隐藏错误信息
 	 */
-	$(".inputClass").focus(function() {
+	$(".layui-input").focus(function() {
 		var labelId = $(this).attr("id") + "Error";//通过输入框找到对应的label的id
 		$("#" + labelId).text("");//把label的内容清空！
 		showError($("#" + labelId));//隐藏没有信息的label
@@ -30,7 +30,7 @@ $(function() {
 	/*
 	 * 4. 输入框失去焦点进行校验
 	 */
-	$(".inputClass").blur(function() {
+	$(".layui-input").blur(function() {
 		var id = $(this).attr("id");//获取当前输入框的id
 		var funName = "validate" + id.substring(0,1).toUpperCase() + id.substring(1) + "()";//得到对应的校验函数名
 		eval(funName);//执行函数调用
@@ -91,7 +91,7 @@ function validateLoginname() {
 		 */
 		$("#" + id + "Error").text("用户名长度必须在3 ~ 20之间！");
 		showError($("#" + id + "Error"));
-		false;
+		return false;
 	}
 	/*
 	 * 3. 是否注册校验

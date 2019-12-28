@@ -5,7 +5,7 @@ $(function() {
 	$("#submit").submit(function(){
 		$("#msg").text("");
 		var bool = true;
-		$(".input").each(function() {
+		$(".layui-input").each(function() {
 			var inputName = $(this).attr("name");
 			if(!invokeValidateFunction(inputName)) {
 				bool = false;
@@ -17,7 +17,7 @@ $(function() {
 	/*
 	 * 3. 输入框推动焦点时进行校验
 	 */
-	$(".input").blur(function() {
+	$(".layui-input").blur(function() {
 		var inputName = $(this).attr("name");
 		invokeValidateFunction(inputName);
 	});
