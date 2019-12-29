@@ -78,7 +78,7 @@
 			</td>
 		</tr>
 </c:forEach>
-		
+
 	</table>
 	<br/>
 	<%@include file="/jsps/pager/pager.jsp" %>

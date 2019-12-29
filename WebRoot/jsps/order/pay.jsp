@@ -29,7 +29,6 @@ $(function() {
   
   <body>
 <div class="divContent">
-
 	<span class="spanPrice">支付金额：</span><span class="price_t">&yen;${order.total }</span>
 	<span class="spanOid">订单编号：${order.oid }</span>
 </div>
@@ -38,8 +37,10 @@ $(function() {
 <input type="hidden" name="method" value="payment"/>
 <input type="hidden" name="oid" value="${order.oid }"/>
 <div class="divPay">
-	<div class="divText">支付成功！</div>
-	<div style="margin: 40px;">
+	<div style="width:100%; background-color:#FFFFFF; height: 35px; "></div>
+	<div class="divText" style=" text-align:center;">支付成功!</div>
+	<div style="width:100%; background-color:#FFFFFF; height: 35px; "></div>
+	<div style="margin:0 auto;width: 190px;">
 		<a href="javascript:void $('#form1').submit();" class="linkNext">返回首页</a>
 	</div>
 </div>
