@@ -6,8 +6,8 @@
 <html>
   <head>
     <title>按图名查询</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
+	  <link rel="stylesheet" type="text/css" href="<c:url value='/layui/src/css/layui.css'/>" media="all">
+	  <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
@@ -27,7 +27,7 @@
 		height: 30px;
 		border-style:solid;
 		margin:0px;
-		border-color: #15B69A;
+		border-color: #FF5722;
 	}
 	a {
 		text-transform:none;
@@ -49,8 +49,14 @@
     	<input type="hidden" name="method" value="findByBname"/>
     	<input type="text" name="bname"/>
     	<span>
-    		<a href="javascript:document.getElementById('form1').submit();"><img align="top" border="0" src="../images/btn.bmp"/></a>
-    		<a href="<c:url value='/jsps/gj.jsp'/>" style="font-size: 10pt; color: #404040;" target="body">高级搜索</a>
+    		<a href="javascript:document.getElementById('form1').submit();">
+<%--				<img align="top" border="0" src="../images/btn.bmp"/>--%>
+				<button class="layui-btn layui-btn-danger">
+					<i class="layui-icon layui-icon-search" style="font-size: 16px; color: white;"></i>
+					搜 索
+				</button>
+			</a>
+<%--    		<a href="<c:url value='/jsps/gj.jsp'/>" style="font-size: 10pt; color: #404040;" target="body">高级搜索</a>--%>
     	</span>
     </form>
     
