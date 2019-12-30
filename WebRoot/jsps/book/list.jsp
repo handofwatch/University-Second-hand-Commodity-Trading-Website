@@ -17,7 +17,6 @@
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/book/list.css'/>">
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
-    <script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/jsps/js/book/list.js'/>"></script>
   </head>
@@ -25,26 +24,28 @@
   <body>
 
 <ul>
-<c:forEach items="${pb.beanList }" var="book">
+<c:forEach items="${pb.beanList }" var="goods">
   <li>
   <div class="inner">
-    <a class="pic" href="<c:url value='/BookServlet?method=load&bid=${book.bid }'/>"><img src="<c:url value='/${book.image_b }'/>" border="0"/></a>
+    <a class="pic" href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>"><img src="<c:url value='/${goods.image_b }'/>" border="0"/></a>
     <p class="price">
-		<span class="price_n">&yen;${book.currPrice }</span>
+		<span class="price_n">&yen;${goods.price }</span>
 	</p>
-	<p><a id="bookname" title="${book.bname }" href="<c:url value='/BookServlet?method=load&bid=${book.bid }'/>">${book.bname }</a></p>
-	<%-- url标签会自动对参数进行url编码 --%>
-	<c:url value="/BookServlet" var="pressUrl">
-		<c:param name="method" value="findByPress"/>
-		<c:param name="press" value="${book.press }"/>
-	</c:url>
-	<p class="publishing">
-		<span>卖家：</span><a href="${pressUrl }">${book.press }</a>
-	</p>
-	<p class="publishing_time"><span>上架时间：</span>${book.publishtime }</p>
+	<p><a id="goodsname" title="${goods.gname }" href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
   </div>
   </li>
 </c:forEach>
+
+
+
+
+
+
+
+ 
+
+
+
 
 </ul>
 

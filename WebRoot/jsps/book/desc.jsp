@@ -17,7 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
-    <script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>
 	<script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/book/desc.css'/>">
@@ -25,30 +24,34 @@
   </head>
   
   <body>
-  <div class="divBookName">${book.bname }</div>
+  <div class="divBookName">${goods.gname }</div>
   <div>
-    <img align="top" src="<c:url value='/${book.image_w }'/>" class="img_image_w"/>
+    <img align="top" src="<c:url value='/${goods.image_w }'/>" class="img_image_w"/>
     <div class="divBookDesc">
 	    <ul>
-	    	<li>商品编号：${book.bid }</li>
-	    	<li>价格：<span class="price_n">&yen;${book.currPrice }</span></li>
-	    	<li>卖家：${book.author }</li>
-	    </ul>
+	    	<li>商品编号：${goods.gid }</li>
+				<li>价格：<span class="price_n">&yen;${goods.price }</span></li>
 		<hr class="hr1"/>
 		<table>
 			<tr>
 				<td colspan="3">
-					商品介绍：${book.author }
+<%--					卖家：${goods.author }--%>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					描述：${goods.gdesc }
 				</td>
 			</tr>
 		</table>
 		<div class="divForm">
 			<form id="form1" action="<c:url value='/CartItemServlet'/>" method="post">
 				<input type="hidden" name="method" value="add"/>
-				<input type="hidden" name="bid" value="${book.bid }"/>
+				<input type="hidden" name="gid" value="${goods.gid }"/>
   			</form>
   			<a id="btn" href="javascript:$('#form1').submit();"></a>
   		</div>
+		</ul>
 	</div>
   </div>
   </body>
