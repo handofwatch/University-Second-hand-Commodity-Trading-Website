@@ -65,54 +65,7 @@ $(function() {
 		}
 		showTotal();//重新计算总计
 	});
-	
-	/*
-	给减号添加click事件
-	*/
-	$(".jian").click(function() {
-		// 获取cartItemId
-		var id = $(this).attr("id").substring(0, 32);
-		// 获取输入框中的数量
-		var quantity = $("#" + id + "Quantity").val();
-		// 判断当前数量是否为1，如果为1,那就不是修改数量了，而是要删除了。
-		if(quantity == 1) {
-			if(confirm("您是否真要删除该条目？")) {
-				location = "/goods/CartItemServlet?method=batchDelete&cartItemIds=" + id;
-			}
-		} else {
-			sendUpdateQuantity(id, quantity-1);
-		}
-	});
-	
-	// 给加号添加click事件
-	$(".jia").click(function() {
-		// 获取cartItemId
-		var id = $(this).attr("id").substring(0, 32);
-		// 获取输入框中的数量
-		var quantity = $("#" + id + "Quantity").val();
-		sendUpdateQuantity(id, Number(quantity)+1);
-	});
 });
-
-// 请求服务器，修改数量。
-function sendUpdateQuantity(id, quantity) {
-	$.ajax({
-		async:false,
-		cache:false,
-		url:"/goods/CartItemServlet",
-		data:{method:"updateQuantity",cartItemId:id,quantity:quantity},
-		type:"POST",
-		dataType:"json",
-		success:function(result) {
-			//1. 修改数量
-			$("#" + id + "Quantity").val(result.quantity);
-			//2. 修改小计
-			$("#" + id + "Subtotal").text(result.subtotal);
-			//3. 重新计算总计
-			showTotal();
-		}
-	});
-}
 
 /*
  * 计算总计
@@ -221,10 +174,10 @@ function jiesuan() {
 			<input value="${cartItem.cartItemId }" type="checkbox" name="checkboxBtn" checked="checked"/>
 		</td>
 		<td align="left" width="70px">
-			<a class="linkImage" href="<c:url value='/jsps/book/desc.jsp'/>"><img border="0" width="54" align="top" src="<c:url value='/${cartItem.goods.image_b }'/>"/></a>
+			<a class="linkImage" href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>"> <img border="0" width="54" align="top" src="<c:url value='/${cartItem.goods.image_b }'/>"/></a>
 		</td>
 		<td align="left" width="400px">
-		    <a href="<c:url value='/jsps/book/desc.jsp'/>"><span>${cartItem.goods.gname }</span></a>
+		    <a href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>"><span>${cartItem.goods.gname }</span></a>
 		</td>
 		<td width="100px">
 			<span class="price_n">&yen;<span class="subTotal" id="${cartItem.cartItemId }Subtotal">${cartItem.subtotal }</span></span>

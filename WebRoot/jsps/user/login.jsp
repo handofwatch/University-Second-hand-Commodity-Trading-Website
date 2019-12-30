@@ -35,7 +35,7 @@
 </script>
   </head>
   
-  <body>
+  <body     style="background-color: #fabd00;">
   <div style="position:absolute; width:1310px; height:888px; z-index:-1 ;top:0px;left: 500px">
       <img src="<c:url value='/images/huang_1_bgi.jpg'/>" height="100%" width="100%"/>
   </div>

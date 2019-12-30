@@ -41,6 +41,7 @@ public class CartItemServlet extends BaseServlet {
 		/*
 		 * 3. 保存，然后转发到/cart/showitem.jsp
 		 */
+
 		req.setAttribute("cartItemList", cartItemList);
 		req.setAttribute("total", total);
 		req.setAttribute("cartItemIds", cartItemIds);

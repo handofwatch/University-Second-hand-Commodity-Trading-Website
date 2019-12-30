@@ -4,10 +4,7 @@ package cn.itcast.goods.order.web.servlet;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +19,7 @@ import cn.itcast.goods.order.service.OrderService;
 import cn.itcast.goods.pager.PageBean;
 import cn.itcast.goods.user.domain.User;
 import cn.itcast.servlet.BaseServlet;
+import cn.itcast.goods.book.domain.Book;
 
 public class OrderServlet extends BaseServlet {
 	private OrderService orderService = new OrderService();
@@ -215,17 +213,17 @@ public class OrderServlet extends BaseServlet {
 	 */
 	public String cancel(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String oid = req.getParameter("oid");
+		String itemId = req.getParameter("orderItemId");
 		/*
 		 * 校验订单状态
 		 */
-		int status = orderService.findStatus(oid);
+		int status = orderService.findStatus(itemId);
 		if(status != 1) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "状态不对，不能取消！");
 			return "f:/jsps/msg.jsp";
 		}
-		orderService.updateStatus(oid, 5);//设置状态为取消！
+		orderService.updateStatus(itemId, 5);//设置状态为取消！
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "您的订单已取消，您不后悔吗！");
 		return "f:/jsps/msg.jsp";		
@@ -241,17 +239,17 @@ public class OrderServlet extends BaseServlet {
 	 */
 	public String confirm(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String oid = req.getParameter("oid");
+		String itemId = req.getParameter("orderItemId");
 		/*
 		 * 校验订单状态
 		 */
-		int status = orderService.findStatus(oid);
+		int status = orderService.findStatus(itemId);
 		if(status != 3) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "状态不对，不能确认收货！");
 			return "f:/jsps/msg.jsp";
 		}
-		orderService.updateStatus(oid, 4);//设置状态为交易成功！
+		orderService.updateStatus(itemId, 4);//设置状态为交易成功！
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "恭喜，交易成功！");
 		return "f:/jsps/msg.jsp";		
@@ -288,7 +286,7 @@ public class OrderServlet extends BaseServlet {
 		/*
 		 * 1. 获取所有购物车条目的id，查询之
 		 */
-		String cartItemIds = req.getParameter("cartItemIds");
+		String cartItemIds = req.getParameter("gids");
 		List<CartItem> cartItemList = cartItemService.loadCartItems(cartItemIds);
 		if(cartItemList.size() == 0) {
 			req.setAttribute("code", "error");
@@ -302,8 +300,8 @@ public class OrderServlet extends BaseServlet {
 		order.setOid(CommonUtils.uuid());//设置主键
 		order.setOrdertime(String.format("%tF %<tT", new Date()));//下单时间
 		order.setAddress(req.getParameter("address"));//设置收货地址
-		//order.setPhone
-		//order.setBuyername
+		order.setPhone(req.getParameter("phone"));//设置手机号
+		order.setBuyername(req.getParameter("buyername"));
 		User owner = (User)req.getSession().getAttribute("sessionUser");
 		order.setOwner(owner);//设置订单所有者
 		
@@ -321,7 +319,7 @@ public class OrderServlet extends BaseServlet {
 		for(CartItem cartItem : cartItemList) {
 			OrderItem orderItem = new OrderItem();
 			orderItem.setOrderItemId(CommonUtils.uuid());//设置主键
-			orderItem.setSubtotal(cartItem.getSubtotal());
+			orderItem.setPrice(cartItem.getSubtotal());
 			orderItem.setGoods(cartItem.getGoods());
 			orderItem.setOrder(order);
 			orderItem.setAddress(order.getAddress());
@@ -379,5 +377,19 @@ public class OrderServlet extends BaseServlet {
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
 		return "f:/jsps/order/list.jsp";
+	}
+	public String buyNow(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		Map map = req.getParameterMap();
+		CartItem cartItem = CommonUtils.toBean(map, CartItem.class);
+		User user = (User)req.getSession().getAttribute("sessionUser");
+		Book goods = CommonUtils.toBean(map, Book.class);
+		cartItem.setGoods(goods);
+		cartItem.setUser(user);
+		List<CartItem> cartItemList = new ArrayList<>();
+		cartItemList.add(cartItem);
+		req.setAttribute("cartItemList", cartItemList);
+
+		return "f:/jsps/cart/showitem.jsp";
 	}
 }

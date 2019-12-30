@@ -5,51 +5,63 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>left</title>
-    <base target="body"/>
+    <title>category</title>
+	<base target="body">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
 	  <link rel="stylesheet" type="text/css" href="<c:url value='/layui/src/css/layui.css'/>" media="all">
 	  <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
-	<link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>" type="text/css" media="all">
+	  <script type="text/javascript" src="<c:url value='/menu/category.js'/> "></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/left.css'/>">
 <script language="javascript">
-/*
- * 1. 对象名必须与第一个参数相同！
-   2. 第二个参数是显示在菜单上的大标题
- */
-var bar = new Q6MenuBar("bar", "传智播客网上书城");
-$(function() {
-	bar.colorStyle = 4;//指定配色样式，一共0,1,2,3,4
-	bar.config.imgDir = "<c:url value='/menu/img/'/>";//小工具所需图片的路径
-	bar.config.radioButton=true;//是否排斥，多个一级分类是否排斥
+	// function Category(objName){
+	// 	this.obj=objName;
+	// 	this.categoryList=[];
+	// }
+	// Category.prototype.getCategory=function(categoryName,url,frameName){
+	// 	var len=this.categoryList.length;
+	// 	this.categoryList[len]=new categoryItem(categoryName,url,frameName);
+	// }
+	// function categoryItem(itemName,url,frameName) {
+	// 	this.itemName=itemName;
+	// 	this.url=url;
+	// 	this.frameName=frameName;
+	// }
+	// Category.prototype.toString=function(){
+	// 	var str="";
+	// 	for(var i in this.categoryList){
+	// 		str += '<li class=\"layui-nav-item\" onclick=\"skip(\''+this.categoryList[i].url+'\',\''+this.categoryList[i].frameName+'\')">'+'<a href="">'+this.categoryList[i].itemName+'</a></li>'
+	// 	}
+	// 	return str;
+	// }
+	// function skip(url, frameName) {
+	// 	if(parent[frameName]) {
+	// 		parent[frameName].location.href=url;
+	// 	} else {
+	// 		location.href=url;
+	// 	}
+	// }
 
-	/*
-	1. 程序设计：一级分类名称
-	2. Java Javascript：二级分类名称
-	3. /goods/jsps/book/list.jsp：点击二级分类后链接到的URL
-	4. body:链接的内容在哪个框架页中显示
-	*/
-<c:forEach items="${parents}" var="parent">
-  <c:forEach items="${parent.children}" var="child">
-	bar.add("${parent.cname}", "${child.cname}", "/goods/BookServlet?method=findByCategory&cid=${child.cid}", "body");
-  </c:forEach>
-</c:forEach>
-	
-	$("#menu").html(bar.toString());
-});
+	var categorybar = new Category("categorybar");
+	$(function() {
+		<c:forEach items="${category}" var="category">
+			categorybar.getCategory("${category.cname}","/goods/BookServlet?method=findByCategory&cid=${category.cid}","body");
+		</c:forEach>
+		$("#categoryHTML").html(categorybar.toString());
+	});
+
 </script>
 </head>
   
-<body>  
-  <div id="menu"></div>
+<body>
+<ul class="layui-nav" style="background-color: #f6a828;text-align: left">
+	<div id="categoryHTML">这里是分类</div>
+
+</ul>
 </body>
 </html>

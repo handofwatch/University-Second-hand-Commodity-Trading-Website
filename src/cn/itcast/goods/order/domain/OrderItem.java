@@ -4,7 +4,7 @@ import cn.itcast.goods.book.domain.Book;
 
 public class OrderItem {
 	private String orderItemId;//主键
-	private double subtotal;//小计
+	private double price;//小计
 	private Book goods;//所关联的Book
 	private Order order;//所属的订单
 	private String address;
@@ -48,11 +48,13 @@ public class OrderItem {
 	public void setOrderItemId(String orderItemId) {
 		this.orderItemId = orderItemId;
 	}
-	public double getSubtotal() {
-		return subtotal;
+
+	public double getPrice() {
+		return price;
 	}
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public Book getGoods() {

@@ -13,17 +13,18 @@ body {
 	border: 5px solid #efeae5;
 }
 
-.divPay {
+.divBank {
 	border: 5px solid #efeae5;
-	width: 480px;
-	height: 200px;
-	margin-left: 200px;
+	width: 880px;
+	height: 450px;
+	margin-left: 50px;
 	margin-top: 20px;
 }
 
 .divText {
-	font-size: 60px;
+	font-size: 15px;
 	font-weight: 900;
+	margin: 20px;
 }
 
 .spanPrice {

@@ -30,6 +30,6 @@ public class CategoryServlet extends BaseServlet {
 		 */
 		List<Category> category = categoryService.findAll();
 		req.setAttribute("category", category);
-		return "f:/jsps/left.jsp";
+		return "f:/jsps/category.jsp";
 	}
  }

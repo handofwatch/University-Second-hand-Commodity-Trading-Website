@@ -19,7 +19,7 @@
 	body {
 		margin-top: 5px;
 		margin-bottom: 0px;
-		margin-left:200px;
+		margin-left:30%;
 		color: #404040;
 	}
 	input {

@@ -30,9 +30,18 @@ public class OrderDao {
 	 * @throws SQLException 
 	 */
 	public int findStatus(String oid) throws SQLException {
-		String sql = "select status from t_order where oid=?";
-		Number number = (Number)qr.query(sql, new ScalarHandler(), oid);
-		return number.intValue();
+		String sql = "select * from t_orderitem where oid=?";
+		OrderItem orderItem = new OrderItem();
+		int status = 1;
+		List<Map<String, Object>> maplist = qr.query(sql, new MapListHandler(), oid);
+		for(int i =0;i< maplist.size();i++){
+			orderItem = CommonUtils.toBean(maplist.get(i),OrderItem.class);
+			if(orderItem.getOrderstatus()!=1){
+				status = orderItem.getOrderstatus();
+			}
+		}
+
+		return status;
 	}
 	
 	/**
@@ -42,7 +51,7 @@ public class OrderDao {
 	 * @throws SQLException
 	 */
 	public void updateStatus(String oid, int status) throws SQLException {
-		String sql = "update t_order set status=? where oid=?";
+		String sql = "update t_orderitem set orderstatus=? where oid=?";
 		qr.update(sql, status, oid);
 	}
 	
@@ -79,15 +88,15 @@ public class OrderDao {
 		 * 多个条目就对应Object[][]
 		 * 执行批处理，完成插入订单条目
 		 */
-		sql = "insert into t_orderitem values(?,?,?,?,?,?,?,?)";
+		sql = "insert into t_orderitem values(?,?,?,?,?,?,?)";
 		int len = order.getOrderItemList().size();
 		Object[][] objs = new Object[len][];
 		for(int i = 0; i < len; i++){
 			OrderItem item = order.getOrderItemList().get(i);
 			objs[i] = new Object[]{item.getOrderItemId(),
-					item.getSubtotal(),item.getGoods().getGid(),
-					item.getGoods().getGname(),item.getGoods().getPrice(),
-					item.getGoods().getImage_b(),order.getOid()};
+					item.getPrice(),item.getGoods().getGid(),
+					item.getGoods().getGname(),item.getGoods().getImage_b(),
+					order.getOid(),item.getOrderstatus()};
 		}
 		qr.batch(sql, objs);
 	}

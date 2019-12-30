@@ -51,6 +51,21 @@
   			</form>
   			<a id="btn" href="javascript:$('#form1').submit();"></a>
   		</div>
+			<div class="divForm">
+				<form id="form2" action="<c:url value='/OrderServlet'/>" method="post">
+					<input type="hidden" name="method" value="buyNow"/>
+					<input type="hidden" name="gid" value="${goods.gid}"/>
+					<input type="hidden" name="gname" value="${goods.gname}"/>
+					<input type="hidden" name="image_w" value="${goods.image_w}"/>
+					<input type="hidden" name="image_b" value="${goods.image_b}"/>
+					<input type="hidden" name="price" value="${goods.price}"/>
+					<input type="hidden" name="gdesc" value="${goods.gdesc}"/>
+<%--					<input type="hidden" name="image_w2" value="${goods.image_w2}"/>--%>
+<%--					<input type="hidden" name="cid" value="${goods.cid}"/>--%>
+<%--					<input type="hidden" name="gstatus" value="${goods.gstatus}"/>--%>
+				</form>
+				<a id="btn2" href="javascript:$('#form2').submit();">立即购买</a>
+			</div>
 		</ul>
 	</div>
   </div>

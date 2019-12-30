@@ -40,7 +40,7 @@
 <%--  	<c:when test="${empty cartItemList }">嘻嘻~</c:when>--%>
 <%--  	<c:otherwise>--%>
 <form id="form1" action="<c:url value='/OrderServlet'/>" method="post">
-	<input type="hidden" name="cartItemIds" value="${cartItemIds }"/>
+	<input type="hidden" name="gids" value="${cartItemIds }"/>
 	<input type="hidden" name="method" value="createOrder"/>
 <table width="95%" align="center" cellpadding="0" cellspacing="0">
 	<tr bgcolor="#efeae5">
@@ -94,7 +94,7 @@
 	</tr>
 	<tr>
 		<td colspan="6">
-			<input id="name" type="text" name="name" value="回守涛"/>
+			<input id="buyername" type="text" name="buyername" value="回守涛"/>
 		</td>
 	</tr>
 	<tr>
