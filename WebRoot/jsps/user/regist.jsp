@@ -134,13 +134,18 @@
 <%--      </tr>--%>
       <div class="layui-form-item" style="padding-left: 112px">
         <div class="layui-inline">
-          <div id="divVerifyCode"><img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/>"/></div>
-          <label><a href="javascript:_hyz()">看不清，换一张</a></label>
+          <div id="divVerifyCode" style="width: 100px"><img style="width: 100px;height: 40px" id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/>"/></div>
+          <label><a href="javascript:_hyz()">看不清，换一张
+              <i class="layui-icon layui-icon-refresh-3" style="font-size: 14px; color: black;"></i>
+          </a></label>
         </div>
       </div>
   <div class="layui-row" style="margin-left: 15px">
     <div class="layui-col-xs9">
-        <a href="<c:url value='/jsps/user/login.jsp'/> " class="layui-btn layui-btn-danger">返回登陆</a>
+        <a href="<c:url value='/jsps/user/login.jsp'/> " class="layui-btn layui-btn-danger">
+            <i class="layui-icon layui-icon-prev" style="font-size: 16px; color: white;"></i>
+            返回登陆
+        </a>
 <%--      <input type="submit" class="layui-btn" value="注册账号">--%>
     </div>
     <div class="layui-col-xs">

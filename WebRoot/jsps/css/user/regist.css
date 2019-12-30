@@ -7,7 +7,7 @@
 .tdError {width: 300px;}
 #tableForm {line-height: 50px;}
 .inputClass {width: 240px; height: 32px; border: 1px solid #7f9db9; line-height: 32px; padding-left: 10px;}
-#imgVerifyCode {width: 100px;}
-#divVerifyCode {text-align: center; border: 1px solid #e2e2e2;}
+#imgVerifyCode {width: 120px;}
+#divVerifyCode {text-align: center; border: thin solid black;}
 .errorClass {color:#cc3300;font-weight: 900;}
 

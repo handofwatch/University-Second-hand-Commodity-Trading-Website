@@ -86,7 +86,9 @@
 									</div>
 								</div>
 								<img id="vCode" src="<c:url value='/VerifyCodeServlet'/>" style="border: black thin solid"/>
-								<a href="javascript:_change();">看不清，换一张</a>
+								<a href="javascript:_change();">看不清，换一张
+									<i class="layui-icon layui-icon-refresh-3" style="font-size: 14px; color: black;"></i>
+								</a>
 <%--								<label id="verifyCodeError" class="error"></label>--%>
 								<div><label id="verifyCodeError" class="error" style="padding-left: 110px"></label></div>
 							</div>

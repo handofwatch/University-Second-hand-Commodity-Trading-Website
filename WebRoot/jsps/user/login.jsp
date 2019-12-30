@@ -115,14 +115,19 @@
                       <div class="layui-inline">
                     <div style="margin-top: 5px;margin-left: 110px">
                       <img id="vCode" src="<c:url value='/VerifyCodeServlet'/>" style="height: 40px;width: 100px"/>
-                      <a href="javascript:_change()"">看不清，换一张</a>
+                      <a href="javascript:_change()">看不清，换一张
+                          <i class="layui-icon layui-icon-refresh-3" style="font-size: 14px; color: black;"></i>
+                      </a>
                     </div>
                       </div>
                   </div>
 
                       <div class="layui-row">
                           <div class="layui-col-xs9" style="margin-left: 15px">
-                              <a href="<c:url value='/jsps/user/regist.jsp'/>" class="layui-btn layui-btn-danger">立即注册</a>
+                              <a href="<c:url value='/jsps/user/regist.jsp'/>" class="layui-btn layui-btn-danger">
+                                  立即注册
+                                  <i class="layui-icon layui-icon-next" style="font-size: 16px; color: white;"></i>
+                              </a>
 
 <%--                              <input type="submit" class="layui-btn" value = "登 陆">--%>
                           </div>
