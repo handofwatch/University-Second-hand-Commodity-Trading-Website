@@ -70,6 +70,9 @@
 		<a href="<c:url value='/OrderServlet?method=myOrders'/>" target="body">
 			<i class="layui-icon layui-icon-list" style="font-size: 18px; color: white;"></i>
 			查看订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="<c:url value='/GoodsServlet?method=addPre'/>" target="body">
+			<i class="layui-icon layui-icon-list" style="font-size: 18px; color: white;"></i>
+			发布商品</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		<a href="<c:url value='/jsps/user/pwd.jsp'/>" target="body">
 			<i class="layui-icon layui-icon-edit" style="font-size: 18px; color: white;"></i>
 			修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;

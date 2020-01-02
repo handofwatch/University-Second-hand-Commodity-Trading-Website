@@ -50,7 +50,7 @@
 	var categorybar = new Category("categorybar");
 	$(function() {
 		<c:forEach items="${category}" var="category">
-			categorybar.getCategory("${category.cname}","/goods/BookServlet?method=findByCategory&cid=${category.cid}","body");
+			categorybar.getCategory("${category.cname}","/goods/GoodsServlet?method=findByCategory&cid=${category.cid}","body");
 		</c:forEach>
 		$("#categoryHTML").html(categorybar.toString());
 	});

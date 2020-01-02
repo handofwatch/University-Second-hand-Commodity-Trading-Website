@@ -58,12 +58,12 @@
 						<tr style="padding-top: 20px; padding-bottom: 20px;">
 							<td class="td" width="400px">
 								<div class="bookname">
-								  <img align="middle" width="70" src="<c:url value='/${orderItem.book.image_b }'/>"/>
-								  ${orderItem.book.bname }
+								  <img align="middle" width="70" src="<c:url value='/${orderItem.goods.image_b }'/>"/>
+								  ${orderItem.goods.bname }
 								</div>
 							</td>
 							<td class="td" >
-								<span>&yen;${orderItem.book.currPrice }</span>
+								<span>&yen;${orderItem.goods.currPrice }</span>
 							</td>
 							<td class="td">
 								<span>${orderItem.quantity }</span>

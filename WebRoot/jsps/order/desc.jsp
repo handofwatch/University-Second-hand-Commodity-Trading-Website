@@ -52,7 +52,7 @@
 							<td class="td" width="400px">
 								<div class="bookname">
 								  <img align="middle" width="70" src="<c:url value='/${item.goods.image_b }'/>"/>
-								  <a href="<c:url value='/BookServlet?method=load&gid=${item.goods.gid }'/>">${item.goods.gname }</a>
+								  <a href="<c:url value='/GoodsServlet?method=load&gid=${item.goods.gid }'/>">${item.goods.gname }</a>
 								</div>
 							</td>
 							<td class="td">

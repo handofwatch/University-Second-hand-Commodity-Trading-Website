@@ -10,7 +10,7 @@
   </filter-mapping>
   <servlet>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.user.web.servlet.UserServlet</servlet-class>
+    <servlet-class>seproject.website.goods.user.web.servlet.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
@@ -22,39 +22,39 @@
   </servlet>
   <servlet>
     <servlet-name>CategoryServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.category.web.servlet.CategoryServlet</servlet-class>
+    <servlet-class>seproject.website.goods.category.web.servlet.CategoryServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>BookServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.book.web.servlet.BookServlet</servlet-class>
+    <servlet-name>GoodsServlet</servlet-name>
+    <servlet-class>seproject.website.goods.goods.web.servlet.GoodsServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CartItemServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.cart.web.servlet.CartItemServlet</servlet-class>
+    <servlet-class>seproject.website.goods.cart.web.servlet.CartItemServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>OrderServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.order.web.servlet.OrderServlet</servlet-class>
+    <servlet-class>seproject.website.goods.order.web.servlet.OrderServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.admin.admin.web.servlet.AdminServlet</servlet-class>
+    <servlet-class>seproject.website.goods.admin.admin.web.servlet.AdminServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AdminCategoryServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.admin.category.web.servlet.AdminCategoryServlet</servlet-class>
+    <servlet-class>seproject.website.goods.admin.category.web.servlet.AdminCategoryServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AdminBookServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.admin.book.web.servlet.AdminBookServlet</servlet-class>
+    <servlet-name>AdminGoodsServlet</servlet-name>
+    <servlet-class>seproject.website.goods.admin.goods.web.servlet.AdminGoodsServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AdminAddBookServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.admin.book.web.servlet.AdminAddBookServlet</servlet-class>
+    <servlet-name>AdminAddGoodsServlet</servlet-name>
+    <servlet-class>seproject.website.goods.admin.goods.web.servlet.AdminAddGoodsServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AdminOrderServlet</servlet-name>
-    <servlet-class>cn.itcast.goods.admin.web.servlet.AdminOrderServlet</servlet-class>
+    <servlet-class>seproject.website.goods.admin.web.servlet.AdminOrderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VerifyCodeServlet</servlet-name>
@@ -65,8 +65,8 @@
     <url-pattern>/CategoryServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>BookServlet</servlet-name>
-    <url-pattern>/BookServlet</url-pattern>
+    <servlet-name>GoodsServlet</servlet-name>
+    <url-pattern>/GoodsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CartItemServlet</servlet-name>
@@ -85,12 +85,12 @@
     <url-pattern>/admin/AdminCategoryServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AdminBookServlet</servlet-name>
-    <url-pattern>/admin/AdminBookServlet</url-pattern>
+    <servlet-name>AdminGoodsServlet</servlet-name>
+    <url-pattern>/admin/AdminGoodsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AdminAddBookServlet</servlet-name>
-    <url-pattern>/admin/AdminAddBookServlet</url-pattern>
+    <servlet-name>AdminAddGoodsServlet</servlet-name>
+    <url-pattern>/admin/AdminAddGoodsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AdminOrderServlet</servlet-name>
@@ -99,7 +99,7 @@
   <filter>
     <display-name>LoginFilter</display-name>
     <filter-name>LoginFilter</filter-name>
-    <filter-class>cn.itcast.goods.web.filter.LoginFilter</filter-class>
+    <filter-class>seproject.website.goods.web.filter.LoginFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
@@ -120,7 +120,7 @@
   <filter>
     <display-name>AdminLoginFilter</display-name>
     <filter-name>AdminLoginFilter</filter-name>
-    <filter-class>cn.itcast.goods.admin.web.filter.AdminLoginFilter</filter-class>
+    <filter-class>seproject.website.goods.admin.web.filter.AdminLoginFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AdminLoginFilter</filter-name>

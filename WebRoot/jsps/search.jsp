@@ -45,7 +45,7 @@
   </head>
   
   <body>
-    <form action="<c:url value='/BookServlet'/>" method="get" target="body" id="form1">
+    <form action="<c:url value='/GoodsServlet'/>" method="get" target="body" id="form1">
     	<input type="hidden" name="method" value="findByBname"/>
     	<input type="text" name="bname"/>
     	<span>

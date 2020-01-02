@@ -57,7 +57,7 @@
 
 
   <c:forEach items="${order.orderItemList }" var="orderItem">
-	    <img border="0" width="70" src="<c:url value='/${orderItem.book.image_b }'/>"/>
+	    <img border="0" width="70" src="<c:url value='/${orderItem.goods.image_b }'/>"/>
   </c:forEach>
 
 			</td>

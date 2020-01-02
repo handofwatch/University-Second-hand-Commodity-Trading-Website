@@ -26,7 +26,7 @@ a {text-decoration: none;}
   
   <body>
   <div style="margin: 0 auto;width:500px;">
-    <h1>欢迎使用大学生二手商品交易平台!</h1>
+      <h1>欢迎使用大学生二手商品交易平台!</h1>
   </div>
 <%--    <a href="http://www.itcast.cn/" target="_top">--%>
 <%--      <img src="http://localhost:8080/goods/images/itcast_link.gif" border="0" style="border:1px #DCD8D7 solid;"/>--%>
@@ -54,7 +54,7 @@ a {text-decoration: none;}
       <span><a target="_top" href="<c:url value='/UserServlet?method=quit'/>">·退出当前账号</a></span>
   </div>
   <div style="margin-left: 320px">
-  <img src="<c:url value='/images/tongji.jpg'/>" class="img"/>
+      <img src="<c:url value='/images/tongji.jpg'/>" class="img"/>
   </div>
   </body>
 </html>

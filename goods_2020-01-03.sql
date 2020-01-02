@@ -1,0 +1,262 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.7.28)
+# Database: goods
+# Generation Time: 2020-01-02 21:29:53 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table t_admin
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_admin`;
+
+CREATE TABLE `t_admin` (
+  `adminId` char(32) NOT NULL,
+  `adminname` varchar(50) NOT NULL DEFAULT '',
+  `adminpwd` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`adminId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_admin` WRITE;
+/*!40000 ALTER TABLE `t_admin` DISABLE KEYS */;
+
+INSERT INTO `t_admin` (`adminId`, `adminname`, `adminpwd`)
+VALUES
+	('a1','liuBei','123'),
+	('a2','guanYu','123'),
+	('a3','zhangSanFei','123');
+
+/*!40000 ALTER TABLE `t_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table t_cartitem
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_cartitem`;
+
+CREATE TABLE `t_cartitem` (
+  `cartItemId` char(32) NOT NULL,
+  `gid` char(32) DEFAULT NULL,
+  `uid` char(32) NOT NULL DEFAULT '',
+  `orderBy` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`cartItemId`),
+  KEY `orderBy` (`orderBy`),
+  KEY `FK_t_cartitem_t_user` (`uid`),
+  KEY `FK_t_cartitem_t_book` (`gid`),
+  CONSTRAINT `FK_t_cartitem_t_book` FOREIGN KEY (`gid`) REFERENCES `t_goods` (`gid`),
+  CONSTRAINT `FK_t_cartitem_t_user` FOREIGN KEY (`uid`) REFERENCES `t_user` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table t_category
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_category`;
+
+CREATE TABLE `t_category` (
+  `cid` char(32) NOT NULL,
+  `cname` varchar(50) NOT NULL DEFAULT '',
+  `cdesc` varchar(100) DEFAULT NULL,
+  `orderBy` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`cid`),
+  UNIQUE KEY `cname` (`cname`),
+  KEY `orderBy` (`orderBy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_category` WRITE;
+/*!40000 ALTER TABLE `t_category` DISABLE KEYS */;
+
+INSERT INTO `t_category` (`cid`, `cname`, `cdesc`, `orderBy`)
+VALUES
+	('56AD72718C524147A2485E5F4A95A062','3DS MAX','3DS MAX分类',1),
+	('57DE3C2DDA784B81844029A28217698C','Dreamweaver','Dreamweaver分类',2),
+	('5F79D0D246AD4216AC04E9C5FAB3199E','书籍','书的分类',3),
+	('FAB7B7F7084F4D57A0808ADC61117683','Windows','Windows分类',4);
+
+/*!40000 ALTER TABLE `t_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table t_goods
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_goods`;
+
+CREATE TABLE `t_goods` (
+  `gid` char(32) NOT NULL DEFAULT '',
+  `userId` char(32) NOT NULL DEFAULT '',
+  `gname` varchar(200) NOT NULL DEFAULT '',
+  `price` decimal(8,2) NOT NULL,
+  `cid` char(32) NOT NULL DEFAULT '',
+  `image_w` varchar(100) DEFAULT NULL,
+  `image_w2` varchar(100) DEFAULT NULL,
+  `image_b` varchar(100) DEFAULT NULL,
+  `gdesc` varchar(400) DEFAULT NULL,
+  `orderBy` int(11) NOT NULL AUTO_INCREMENT,
+  `gstatus` int(11) NOT NULL,
+  PRIMARY KEY (`gid`),
+  KEY `orderBy` (`orderBy`),
+  KEY `FK_t_book_t_category` (`cid`),
+  KEY `t_goods_t_user` (`userId`),
+  CONSTRAINT `t_goods_t_category` FOREIGN KEY (`cid`) REFERENCES `t_category` (`cid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `t_goods_t_user` FOREIGN KEY (`userId`) REFERENCES `t_user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_goods` WRITE;
+/*!40000 ALTER TABLE `t_goods` DISABLE KEYS */;
+
+INSERT INTO `t_goods` (`gid`, `userId`, `gname`, `price`, `cid`, `image_w`, `image_w2`, `image_b`, `gdesc`, `orderBy`, `gstatus`)
+VALUES
+	('5315DA60D24042889400AD4C93A37501','531D8A16D524478D86F8A115FE95D93F','Spring 3',90.00,'5F79D0D246AD4216AC04E9C5FAB3199E','book_img/22605701-1_w.jpg','book_img/22605701-1_w.jpg','book_img/22605701-1_b.jpg','spring',5,1),
+	('CB0AB3654945411EA69F368D0EA91A00','531D8A16D524478D86F8A115FE95D93F','JavaScript',49.00,'5F79D0D246AD4216AC04E9C5FAB3199E','book_img/22872884-1_w.jpg',NULL,'book_img/22872884-1_b.jpg','java',4,1),
+	('CD913617EE964D0DBAF20C60076D32FB','531D8A16D524478D86F8A115FE95D93F','名师讲坛',79.80,'5F79D0D246AD4216AC04E9C5FAB3199E','book_img/20637368-1_w_2.jpg',NULL,'book_img/20637368-1_b_2.jpg','web',3,1),
+	('CE01F15D435A4C51B0AD8202A318DCA7','531D8A16D524478D86F8A115FE95D93F','Java编程思想（第4版）',108.00,'5F79D0D246AD4216AC04E9C5FAB3199E','book_img/9317290-1_w.jpg',NULL,'book_img/9317290-1_b.jpg',NULL,1,1),
+	('DF4E74EEE89B43229BB8212F0B858C38','531D8A16D524478D86F8A115FE95D93F','精通Hibernate',75.00,'5F79D0D246AD4216AC04E9C5FAB3199E','book_img/20773347-1_w_1.jpg',NULL,'book_img/20773347-1_b.jpg',NULL,2,1);
+
+/*!40000 ALTER TABLE `t_goods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table t_order
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_order`;
+
+CREATE TABLE `t_order` (
+  `oid` char(32) NOT NULL,
+  `ordertime` char(19) DEFAULT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `address` varchar(1000) NOT NULL DEFAULT '',
+  `uid` char(32) NOT NULL DEFAULT '',
+  `buyername` varchar(100) NOT NULL DEFAULT '',
+  `phone` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`oid`),
+  KEY `FK_t_order_t_user` (`uid`),
+  CONSTRAINT `FK_t_order_t_user` FOREIGN KEY (`uid`) REFERENCES `t_user` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_order` WRITE;
+/*!40000 ALTER TABLE `t_order` DISABLE KEYS */;
+
+INSERT INTO `t_order` (`oid`, `ordertime`, `total`, `address`, `uid`, `buyername`, `phone`)
+VALUES
+	('0A3F13C6E1784949B87F57338AC642B9','2020-01-03 03:40:09',108.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('0E946A8C8769468DA588BBE1339D1D8D','2020-01-03 03:05:23',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('12CB83244DD540FD8A456758EC37E514','2019-12-30 21:30:49',262.80,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','name','13999999999'),
+	('19696A84CC6141D389B6575E6A0E533F','2020-01-03 03:04:46',75.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('6FFE54DAB4F649EBB4E08DE3D88036D4','2019-12-31 02:29:25',75.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('7056D6FE560E4A51B15D1A3B76FF1FB1','2020-01-03 03:39:29',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('75250DDE532F4B7FADE3FFCD87959B3C','2020-01-03 03:05:33',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('8113237FFE3B44649A14C7B2695B54DD','2020-01-03 03:05:14',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('8C73C984D3AD401B83A4647FC942F569','2019-12-31 02:22:23',108.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('A712757A36F74BEC8D39508E4D3EEEC4','2020-01-03 03:39:51',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('CE309A662A444C888EC8C6BFBC4166FB','2020-01-03 03:05:29',0.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('E616AA7833284D7185ADD63D49E2F4F7','2020-01-03 03:39:43',75.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999'),
+	('FEB19B08A67340659786563F5773F442','2020-01-03 03:46:30',75.00,'上海市同济大学嘉定校区','531D8A16D524478D86F8A115FE95D93F','回守涛','13999999999');
+
+/*!40000 ALTER TABLE `t_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table t_orderitem
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_orderitem`;
+
+CREATE TABLE `t_orderitem` (
+  `orderItemId` char(32) NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `gid` char(32) NOT NULL DEFAULT '',
+  `gname` varchar(200) NOT NULL DEFAULT '',
+  `image_b` varchar(100) DEFAULT NULL,
+  `oid` char(32) NOT NULL DEFAULT '',
+  `orderstatus` int(11) NOT NULL,
+  PRIMARY KEY (`orderItemId`),
+  KEY `FK_t_orderitem_t_order` (`oid`),
+  CONSTRAINT `FK_t_orderitem_t_order` FOREIGN KEY (`oid`) REFERENCES `t_order` (`oid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_orderitem` WRITE;
+/*!40000 ALTER TABLE `t_orderitem` DISABLE KEYS */;
+
+INSERT INTO `t_orderitem` (`orderItemId`, `price`, `gid`, `gname`, `image_b`, `oid`, `orderstatus`)
+VALUES
+	('0679B839DD624942804BFF026D04FAC1',108.00,'CE01F15D435A4C51B0AD8202A318DCA7','Java编程思想（第4版）','book_img/9317290-1_b.jpg','0A3F13C6E1784949B87F57338AC642B9',1),
+	('2CC802C9244945D5B5481092BDBB48F3',108.00,'CE01F15D435A4C51B0AD8202A318DCA7','Java编程思想（第4版）','book_img/9317290-1_b.jpg','12CB83244DD540FD8A456758EC37E514',1),
+	('3344C21DED804905B44A5E86921AE7DA',79.80,'CD913617EE964D0DBAF20C60076D32FB','名师讲坛——Java开发实战经典（配光盘）（60小时全真课堂培训，视频超级给力！790项实例及分析，北京魔乐科技培训中心Java全部精华）','book_img/20637368-1_b_2.jpg','19696A84CC6141D389B6575E6A0E533F',1),
+	('4A58618A07EE4A59A8653920E7899142',75.00,'DF4E74EEE89B43229BB8212F0B858C38','精通Hibernate：Java对象持久化技术详解（第2版）(含光盘1张)','book_img/20773347-1_b.jpg','19696A84CC6141D389B6575E6A0E533F',1),
+	('4CD6A0E7797B4974BC8E8296CFC02D2D',75.00,'DF4E74EEE89B43229BB8212F0B858C38','精通Hibernate：Java对象持久化技术详解（第2版）(含光盘1张)','book_img/20773347-1_b.jpg','12CB83244DD540FD8A456758EC37E514',1),
+	('842B32C797EC41B090E446B69E1F87A0',75.00,'DF4E74EEE89B43229BB8212F0B858C38','精通Hibernate：Java对象持久化技术详解（第2版）(含光盘1张)','book_img/20773347-1_b.jpg','FEB19B08A67340659786563F5773F442',1),
+	('A15F6570488F4268924B9B7547A2ED1E',75.00,'DF4E74EEE89B43229BB8212F0B858C38','精通Hibernate：Java对象持久化技术详解（第2版）(含光盘1张)','book_img/20773347-1_b.jpg','E616AA7833284D7185ADD63D49E2F4F7',1),
+	('A2E6265462EB4345B82F08251D43CB1B',75.00,'DF4E74EEE89B43229BB8212F0B858C38','精通Hibernate：Java对象持久化技术详解（第2版）(含光盘1张)','book_img/20773347-1_b.jpg','6FFE54DAB4F649EBB4E08DE3D88036D4',1),
+	('A59C209D4C2A49509E6956C4761A6960',79.80,'CD913617EE964D0DBAF20C60076D32FB','名师讲坛——Java开发实战经典（配光盘）（60小时全真课堂培训，视频超级给力！790项实例及分析，北京魔乐科技培训中心Java全部精华）','book_img/20637368-1_b_2.jpg','12CB83244DD540FD8A456758EC37E514',1),
+	('C5C354CB578E435ABEA2B9C6B710E088',108.00,'CE01F15D435A4C51B0AD8202A318DCA7','Java编程思想（第4版）','book_img/9317290-1_b.jpg','8C73C984D3AD401B83A4647FC942F569',1);
+
+/*!40000 ALTER TABLE `t_orderitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table t_user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_user`;
+
+CREATE TABLE `t_user` (
+  `uid` char(32) NOT NULL,
+  `loginname` varchar(50) NOT NULL DEFAULT '',
+  `loginpass` varchar(50) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '',
+  `status` tinyint(1) NOT NULL,
+  `activationCode` char(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `loginname` (`loginname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `t_user` WRITE;
+/*!40000 ALTER TABLE `t_user` DISABLE KEYS */;
+
+INSERT INTO `t_user` (`uid`, `loginname`, `loginpass`, `email`, `status`, `activationCode`)
+VALUES
+	('32DB3700D2564254982BC58B0E4D95BC','liSi','1234','itcast_cxf@126.com',1,'15682E9C4D2849E2AB5D8AFF55D2F7BA87126B0EF55A45C6A136E3CAA90D60F2'),
+	('4DE7E4D829A54D4FAB150B7451407198','def','def','itcast_cxf@soh.com',0,'D00FAA82457748FF8C1B912042E615B39F3602053E154181B98CDD48D9ECFC96'),
+	('531D8A16D524478D86F8A115FE95D93F','zhangSan','123','itcast_cxf@163.com',1,'FCF142D04C4A420992FF4E7BAC92C1E58AF905F1A46B4818BB455BD925E52DDD'),
+	('55790D9C1A1845738E6D93866A148C7E','wangWu','123','itcast_cxf@sina.com',1,'659903B3D5FF4576B82425A593962DFE64B6137EBE934AE5AE19F614E71F4549'),
+	('608E7DB1DA5D4FF9BF00586129506A3A','cirtuslimon','123','1589826173@qq.com',0,'4D573D12924F4BCB8B4C60AA6CD2F822C5F95C1E9DC74638A8EEA502D71CE73C'),
+	('9CC972DFA2D4481F89841A46FD1B3E7B','abc','abc','itcast_cxf@qq.com',0,'D7CEB3DE44364749A4807D98F8B2F63017FDFED9FFC842B6BBC64E20698FED5F'),
+	('B0D4BDF9CB684302A84ABD80485FA833','cirtus','123','cirtuslimon@163.com',0,'E28E5D84EFD84723B3FF789590EF29479FA2A56E12424CB0AE5685CE075E072F'),
+	('B50ADE921BF14F6EB5331777B1874763','aabb','aaa','abc@abc.cn',0,'10032D0DFD2B49DC98CA9739F929656B6819FA1C10EC44F8A95206D0C3D62094'),
+	('C3F9448C30954F8E9FB88E96E2886EE3','123','123','13764688@qq.com',0,'60F5AFAC00AD40DCBC2BAC28DE946A892C23CB57BB49407BA3C23DA1BB4950E2'),
+	('DF214F9440534B6B90FA898F989C9E5B','knight','123','3415858760@qq.com',0,'907C16E460D3484094DABB18511138AB41E6469D16BA436394414B301402F8C7'),
+	('x','刘备','123','liuBei@163.com',1,'x'),
+	('xx','关羽','123','guanYu@163.com',1,'xx'),
+	('xxx','张三','123','zhangFei@163.com',1,'xxx'),
+	('xxxx','赵云','123','zhaoYun@163.com',1,'xxxx');
+
+/*!40000 ALTER TABLE `t_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

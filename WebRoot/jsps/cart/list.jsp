@@ -174,10 +174,10 @@ function jiesuan() {
 			<input value="${cartItem.cartItemId }" type="checkbox" name="checkboxBtn" checked="checked"/>
 		</td>
 		<td align="left" width="70px">
-			<a class="linkImage" href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>"> <img border="0" width="54" align="top" src="<c:url value='/${cartItem.goods.image_b }'/>"/></a>
+			<a class="linkImage" href="<c:url value='/GoodsServlet?method=load&gid=${goods.gid }'/>"> <img border="0" width="54" align="top" src="<c:url value='/${cartItem.goods.image_b }'/>"/></a>
 		</td>
 		<td align="left" width="400px">
-		    <a href="<c:url value='/BookServlet?method=load&gid=${goods.gid }'/>"><span>${cartItem.goods.gname }</span></a>
+		    <a href="<c:url value='/GoodsServlet?method=load&gid=${goods.gid }'/>"><span>${cartItem.goods.gname }</span></a>
 		</td>
 		<td width="100px">
 			<span class="price_n">&yen;<span class="subTotal" id="${cartItem.cartItemId }Subtotal">${cartItem.subtotal }</span></span>

@@ -40,7 +40,7 @@
 <%--  	<c:when test="${empty cartItemList }">嘻嘻~</c:when>--%>
 <%--  	<c:otherwise>--%>
 <form id="form1" action="<c:url value='/OrderServlet'/>" method="post">
-	<input type="hidden" name="gids" value="${cartItemIds }"/>
+	<input type="hidden" name="cartitemids" value="${cartItemIds }"/>
 	<input type="hidden" name="method" value="createOrder"/>
 <table width="95%" align="center" cellpadding="0" cellspacing="0">
 	<tr bgcolor="#efeae5">
@@ -53,16 +53,16 @@
 	</tr>
 
 
-<c:forEach items="${cartItemList }" var="cartItem">
+<c:forEach items="${GoodsList }" var="goods">
 	<tr align="center">
 		<td align="right">
-			<a class="linkImage" href="<c:url value='/jsps/book/desc.jsp'/>"><img border="0" width="54" align="top" src="<c:url value='/${cartItem.goods.image_b }'/>"/></a>
+			<a class="linkImage" href="<c:url value='/jsps/goods/desc.jsp'/>"><img border="0" width="54" align="top" src="<c:url value='/${goods.image_b }'/>"/></a>
 		</td>
 		<td align="left">
-			<a href="<c:url value='/jsps/book/desc.jsp'/>"><span>${cartItem.goods.gname }</span></a>
+			<a href="<c:url value='/jsps/goods/desc.jsp'/>"><span>${goods.gname }</span></a>
 		</td>
 		<td>
-			<span class="price_n">&yen;<span class="subtotal">${cartItem.subtotal }</span></span>
+			<span class="price_n">&yen;<span class="subtotal">${goods.price}</span></span>
 		</td>
 	</tr>
 </c:forEach>

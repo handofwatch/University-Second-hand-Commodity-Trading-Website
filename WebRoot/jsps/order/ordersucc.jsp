@@ -37,11 +37,11 @@
 		<dd>${order.buyername }</dd>
 	</dl>
 	<div style="margin: 0 auto;width: 300px;">
-	<span>订单提交成功！请点击“支付”进行支付</span>
+		<span>订单提交成功！请点击“支付”进行支付</span>
 	</div>
 	<div style="margin: 0 auto;width: 80px;">
 	<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>" id="linkPay">支付</a>
 	</div>
-	</div>
+</div>
   </body>
 </html>
