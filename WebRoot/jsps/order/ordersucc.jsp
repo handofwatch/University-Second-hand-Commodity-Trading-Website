@@ -31,9 +31,17 @@
 		<dd><span class="price_t">&yen;${order.total }</span></dd>
 		<dt>收货地址</dt>
 		<dd>${order.address }</dd>
+		<dt>手机号码</dt>
+		<dd>${order.phone }</dd>
+		<dt>收货人姓名</dt>
+		<dd>${order.buyername }</dd>
 	</dl>
-	<span>ITCAST书城感谢您的支持，祝您购物愉快！</span>
+	<div style="margin: 0 auto;width: 300px;">
+	<span>订单提交成功！请点击“支付”进行支付</span>
+	</div>
+	<div style="margin: 0 auto;width: 80px;">
 	<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>" id="linkPay">支付</a>
-</div>
+	</div>
+	</div>
   </body>
 </html>

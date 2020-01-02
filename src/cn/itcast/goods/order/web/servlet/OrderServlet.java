@@ -187,7 +187,7 @@ public class OrderServlet extends BaseServlet {
 				keyValue);
 		if(!bool) {
 			req.setAttribute("code", "error");
-			req.setAttribute("msg", "无效的签名，支付失败！（你不是好人）");
+			req.setAttribute("msg", "无效的签名，支付失败！");
 			return "f:/jsps/msg.jsp";
 		}
 		if(r1_Code.equals("1")) {
@@ -225,7 +225,7 @@ public class OrderServlet extends BaseServlet {
 		}
 		orderService.updateStatus(itemId, 5);//设置状态为取消！
 		req.setAttribute("code", "success");
-		req.setAttribute("msg", "您的订单已取消，您不后悔吗！");
+		req.setAttribute("msg", "您的订单已取消！");
 		return "f:/jsps/msg.jsp";		
 	}
 	

@@ -47,9 +47,23 @@
 		height:25px;
 		font-weight: 900;
 	}
+	#btn {
+	background: url(/goods/images/return_1.png) no-repeat;
+	display: inline-block;
+	background-position: 0 px;
+		height: 52px;
+		width: 239px;
+	}
+	#btn:HOVER {
+		background: url(/goods/images/return_2.png) no-repeat;
+		display: inline-block;
+		background-position: 0 px;
+		height: 52px;
+		width: 239px;
+	}
 a {text-decoration: none;}
 a:visited {color: #018BD3;}
-a:hover {color:#FF6600; text-decoration: underline;}
+a:hover {color: #ff7d00; text-decoration: underline;}
 </style>
 
   </head>
@@ -66,6 +80,7 @@ a:hover {color:#FF6600; text-decoration: underline;}
   	</c:when>
   	
   </c:choose>
+  <form action="<c:url value='/'/>" method="post" id="form1" target="_top">
 <div class="divBody">
 	<div class="divTitle">
 		<span class="spanTitle">${title }</span>
@@ -73,17 +88,13 @@ a:hover {color:#FF6600; text-decoration: underline;}
 	<div class="divContent">
 	  <div style="margin: 20px;">
 		<img style="float: left; margin-right: 30px;" src="<c:url value='${img }'/>" width="150"/>
-		<span style="font-size: 30px; color: #c30; font-weight: 900;">${msg }</span>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<span style="margin-left: 50px;"><a target="_top" href="<c:url value='/jsps/user/login.jsp'/>">登录</a></span>
-		<span style="margin-left: 50px;"><a target="_top" href="<c:url value='/index.jsp'/>">主页</a></span>
+		<span style="font-size: 30px; color: #cc6b00; font-weight: 900;">${msg }</span>
+		<div style="margin: 50px">
+		  <a id="btn" target="_top"  href="<c:url value='/index.jsp'/>"></a>
+		</div>
 	  </div>
 	</div>
 </div>
-
-
+  </form>
   </body>
 </html>

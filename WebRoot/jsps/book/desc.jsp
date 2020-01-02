@@ -64,7 +64,7 @@
 <%--					<input type="hidden" name="cid" value="${goods.cid}"/>--%>
 <%--					<input type="hidden" name="gstatus" value="${goods.gstatus}"/>--%>
 				</form>
-				<a id="btn2" href="javascript:$('#form2').submit();">立即购买</a>
+				<a id="btn2" href="javascript:$('#form2').submit();"></a>
 			</div>
 		</ul>
 	</div>

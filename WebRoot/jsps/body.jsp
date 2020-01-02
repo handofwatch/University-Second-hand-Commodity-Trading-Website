@@ -25,7 +25,9 @@ a {text-decoration: none;}
   </head>
   
   <body>
-    <h1>欢迎使用大学生二手商品交易平台</h1>
+  <div style="margin: 0 auto;width:500px;">
+    <h1>欢迎使用大学生二手商品交易平台!</h1>
+  </div>
 <%--    <a href="http://www.itcast.cn/" target="_top">--%>
 <%--      <img src="http://localhost:8080/goods/images/itcast_link.gif" border="0" style="border:1px #DCD8D7 solid;"/>--%>
 <%--    </a>--%>
@@ -36,5 +38,23 @@ a {text-decoration: none;}
 <%--    <a href="http://www.csdn.net/" target="_top">--%>
 <%--      <img src="http://localhost:8080/goods/images/csdn.jpg" border="0"/>--%>
 <%--    </a>--%>
+  <div style="margin: 0 auto;width:200px;">
+      <h1>您可以：</h1>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/CartItemServlet?method=myCart'/>">·查看购物车</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/OrderServlet?method=myOrders'/>">·查看订单</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/jsps/user/pwd.jsp'/>">·修改密码</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/UserServlet?method=quit'/>">·退出当前账号</a></span>
+  </div>
+  <div style="margin-left: 320px">
+  <img src="<c:url value='/images/tongji.jpg'/>" class="img"/>
+  </div>
   </body>
 </html>
