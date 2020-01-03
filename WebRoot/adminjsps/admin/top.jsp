@@ -17,20 +17,20 @@
 	-->
 <style type="text/css">
 	body {font-size: 10pt;}
-	a {color: #aaa;}
+	a {color: #ffffff;}
 </style>
   </head>
   
   <body style="background: rgb(78,78,78);color: #fff;">
-<h1 style="text-align: center; line-height: 30px;">传智播客网上书城系统后台管理</h1>
+<h1 style="text-align: center; line-height: 30px;">大学生二手商品交易平台后台管理</h1>
 <div style="line-height: 10px;">
 	<span>管理员：${sessionScope.admin.adminname }</span>
-	<a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">退出</a>
 	<span style="padding-left:50px;">
-		<a href="<c:url value='/admin/AdminCategoryServlet?method=findAll'/>">分类管理</a>
-		<a href="<c:url value='/adminjsps/admin/goods/main.jsp'/>">图书管理</a>
-		<a href="<c:url value='/admin/AdminOrderServlet?method=findAll'/>">订单管理</a>
+		<a href="<c:url value='/admin/AdminCategoryServlet?method=findAll'/>">|分类管理</a>
+		<a href="<c:url value='/adminjsps/admin/goods/main.jsp'/>">|商品管理</a>
+		<a href="<c:url value='/admin/AdminOrderServlet?method=findAll'/>">|订单管理|</a>
 	</span>
+	<a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">退出</a>
 </div>
   </body>
 </html>

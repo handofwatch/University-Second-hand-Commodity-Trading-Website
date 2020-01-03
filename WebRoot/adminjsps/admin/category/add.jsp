@@ -29,20 +29,27 @@
 		}
 	</script>
 <style type="text/css">
-	body {background: rgb(254,238,189);}
+	body {background: rgb(254, 238, 189);}
 </style>
   </head>
   
   <body>
+  <div style="margin:0 auto;width:200px;margin-top: 50px;font-size: 28px">
     <h3>添加分类</h3>
     <h1></h1>
+  </div>
+  <div style="margin-left: 480px">
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post" onsubmit="return checkForm()">
     	<input type="hidden" name="method" value="addParent"/>
+		<div style="width:100%; background-color:#feeebd; height: 32px; "></div>
     	分类名称：<input type="text" name="cname" id="cname"/><br/>
+		<div style="width:100%; background-color:#feeebd; height: 24px; "></div>
     	分类描述：<textarea rows="5" cols="50" name="desc" id="desc"></textarea><br/>
-    	<input type="submit" value="添加分类"/>
-    	<input type="button" value="返回" onclick="history.go(-1)"/>
+		<div style="width:100%; background-color:#feeebd; height: 50px; "></div>
+    	<input style="margin-left: 168px" type="submit" value="添加分类"/>
+    	<input style="margin-left: 40px" type="button" value="返回" onclick="history.go(-1)"/>
     </form>
+  </div>
   </body>
 </html>

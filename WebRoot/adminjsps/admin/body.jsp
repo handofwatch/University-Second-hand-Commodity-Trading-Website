@@ -17,7 +17,24 @@
 
   </head>
   
-  <body style="margin: 0px;">
-    <img src="<c:url value='/images/welcome.jpg'/>" width="100%" height="100%"/>
+  <body>
+  <div style="margin: 0 auto;width:335px;">
+      <h1>欢迎您，管理员${sessionScope.admin.adminname }!</h1>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/admin/AdminCategoryServlet?method=findAll'/>">·分类管理</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/adminjsps/admin/goods/main.jsp'/>">·商品管理</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/admin/AdminOrderServlet?method=findAll'/>">·订单管理</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">·退出当前账号</a></span>
+  </div>
+  <div style="margin: 0 auto;width:394px">
+      <img src="<c:url value='/images/tongji.jpg'/>" class="img"/>
+  </div>
   </body>
 </html>
