@@ -17,6 +17,7 @@ import seproject.website.goods.pager.Expression;
 import seproject.website.goods.pager.PageBean;
 import seproject.website.goods.pager.PageConstants;
 import cn.itcast.jdbc.TxQueryRunner;
+import seproject.website.goods.user.domain.User;
 
 public class GoodsDao {
 	private QueryRunner qr = new TxQueryRunner();
@@ -36,8 +37,8 @@ public class GoodsDao {
 	 * @throws SQLException 
 	 */
 	public void edit(Goods goods) throws SQLException {
-		String sql = "update t_goods set gname=?,price=?," +
-				"gdesc=?image_w=?,image_w2=?,image_b=?" +
+		String sql = "update t_goods set gname=?, price=?," +
+				"gdesc=?, image_w=?, image_w2=?,image_b=?," +
 				"cid=? where gid=?";
 		Object[] params = {goods.getGname(),
 				goods.getPrice(),goods.getGdesc(),goods.getImage_w(),goods.getImage_w2(),
@@ -59,15 +60,12 @@ public class GoodsDao {
 		Goods goods = CommonUtils.toBean(map, Goods.class);
 		// 把Map中cid属性映射到Category中，即这个Category只有cid
 		Category category = CommonUtils.toBean(map, Category.class);
+
+		User user = CommonUtils.toBean(map, User.class);
+		goods.setUser(user);
+
 		// 两者建立关系
 		goods.setCategory(category);
-		
-//		// 把pid获取出来，创建一个Category parnet，把pid赋给它，然后再把parent赋给category
-//		if(map.get("pid") != null) {
-//			Category parent = new Category();
-//			parent.setCid((String)map.get("pid"));
-//			category.setParent(parent);
-//		}
 		return goods;
 	}
 	
@@ -186,13 +184,24 @@ public class GoodsDao {
 	 * @throws SQLException 
 	 */
 	public void add(Goods goods) throws SQLException {
-		String sql = "insert into t_goods(gid,gname,price," +
-				"gdesc,gstatus" +
-				"cid,image_w,image_w2,image_b)" +
-				" values(?,?,?,?,?,?,?,?,?)";
-		Object[] params = {goods.getGid(),goods.getGname(),goods.getPrice(),
-				goods.getGdesc(),goods.getGstatus(),goods.getCategory().getCid(),
+		String sql = "insert into t_goods(gid, userId, gname, price," +
+				"cid, gdesc, gstatus," +
+				"image_w, image_w2, image_b)" +
+				" values(?,?,?,?,?,?,?,?,?,?)";
+		Object[] params = {goods.getGid(),goods.getUser().getUid(),goods.getGname(),goods.getPrice(),
+				goods.getCategory().getCid(),goods.getGdesc(),goods.getGstatus(),
 				goods.getImage_w(),goods.getImage_w2(),goods.getImage_b()};
 		qr.update(sql, params);
+	}
+
+	public PageBean<Goods> findByUid(String Uid, int pc) throws SQLException {
+		List<Expression> exprList = new ArrayList<Expression>();
+		exprList.add(new Expression("userId", "=", Uid));
+		return findByCriteria(exprList, pc);
+	}
+
+	public void updategstatus(String gid, int gstatus) throws SQLException {
+		String sql = "update t_goods set gstatus=? where gid=?";
+		qr.update(sql, gstatus, gid);
 	}
 }

@@ -25,34 +25,26 @@ public class OrderDao {
 	
 	/**
 	 * 查询订单状态
-	 * @param oid
+	 * @param orderitemid
 	 * @return
 	 * @throws SQLException 
 	 */
-	public int findStatus(String oid) throws SQLException {
-		String sql = "select * from t_orderitem where oid=?";
-		OrderItem orderItem = new OrderItem();
-		int status = 1;
-		List<Map<String, Object>> maplist = qr.query(sql, new MapListHandler(), oid);
-		for(int i =0;i< maplist.size();i++){
-			orderItem = CommonUtils.toBean(maplist.get(i),OrderItem.class);
-			if(orderItem.getOrderstatus()!=1){
-				status = orderItem.getOrderstatus();
-			}
-		}
+	public int findStatus(String orderitemid) throws SQLException {
+		String sql = "select orderstatus from t_orderitem where orderItemId=?";
+		int status  = (int) qr.query(sql, new ScalarHandler (), orderitemid);
 
 		return status;
 	}
 	
 	/**
 	 * 修改订单状态
-	 * @param oid
+	 * @param orderItemId
 	 * @param status
 	 * @throws SQLException
 	 */
-	public void updateStatus(String oid, int status) throws SQLException {
-		String sql = "update t_orderitem set orderstatus=? where oid=?";
-		qr.update(sql, status, oid);
+	public void updateStatus(String orderItemId, int status) throws SQLException {
+		String sql = "update t_orderitem set orderstatus=? where orderItemId=?";
+		qr.update(sql, status, orderItemId);
 	}
 	
 	/**
@@ -242,5 +234,17 @@ public class OrderDao {
 		Goods goods = CommonUtils.toBean(map, Goods.class);
 		orderItem.setGoods(goods);
 		return orderItem;
+	}
+
+	public OrderItem findByGid(String gid) throws SQLException {
+		String sql = "select * from t_orderitem where gid=?";
+		OrderItem orderitem = qr.query(sql, new BeanHandler<OrderItem>(OrderItem.class), gid);
+		return orderitem;
+	}
+
+	public String findGid(String orderitemid) throws SQLException {
+		String sql = "select gid from t_orderitem where orderItemId=?";
+		String gid = (String) qr.query(sql, new ScalarHandler(), orderitemid);
+		return gid;
 	}
 }

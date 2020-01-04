@@ -1,6 +1,7 @@
 package seproject.website.goods.goods.domain;
 
 import seproject.website.goods.category.domain.Category;
+import seproject.website.goods.user.domain.User;
 
 public class Goods {
 	private String gid;//主键
@@ -11,7 +12,16 @@ public class Goods {
 	private String image_w;//大图路径
 	private String image_b;//小图路径
 	private String gdesc;
-	private double price;
+	private double price;;
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getGid() {
 		return gid;

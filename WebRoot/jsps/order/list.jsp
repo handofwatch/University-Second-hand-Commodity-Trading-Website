@@ -46,14 +46,14 @@
 				</a>
 	  			<c:choose>
 		  			<c:when test="${orderItem.orderstatus eq 1 }">(等待付款)</c:when>
-		  			<c:when test="${orderItem.orderstatus eq 2 }">(准备发货)</c:when>
-		  			<c:when test="${orderItem.orderstatus eq 3 }">(等待确认)</c:when>
+		  			<c:when test="${orderItem.orderstatus eq 2 }">(等待卖家发货)</c:when>
+		  			<c:when test="${orderItem.orderstatus eq 3 }">(等待您确认收货)</c:when>
 		  			<c:when test="${orderItem.orderstatus eq 4 }">(交易成功)</c:when>
 		  			<c:when test="${orderItem.orderstatus eq 5 }">(已取消)</c:when>
 	  			</c:choose>
 
 	  			<c:if test="${orderItem.orderstatus eq 3 }">
-		  			<a href="<c:url value='/OrderServlet?method=load&oid=${orderItem.orderItemId }&btn=confirm'/>">确认收货</a><br/>
+		  			<a href="<c:url value='/OrderServlet?method=confirm&orderItemId=${orderItem.orderItemId }'/>">确认收货</a><br/>
 	  			</c:if>
 			</div>
   			</c:forEach>
@@ -64,7 +64,7 @@
 					<a href="<c:url value='/OrderServlet?method=load&oid=${order.oid }'/>">
 						查看详情<i class="layui-icon layui-icon-list" style="font-size: 17px; color: black;"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
 					<c:if test="${order.orderItemList[0].orderstatus eq 1 }">
-						<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>">
+						<a href="<c:url value='/OrderServlet?method=payment&oid=${order.oid }'/>">
 							前往支付<i class="layui-icon layui-icon-release" style="font-size: 17px; color: black;"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
 						<a href="<c:url value='/OrderServlet?method=load&oid=${order.oid }&btn=cancel'/>">
 							取消物品<i class="layui-icon layui-icon-close" style="font-size: 17px; color: black;"></i></a>

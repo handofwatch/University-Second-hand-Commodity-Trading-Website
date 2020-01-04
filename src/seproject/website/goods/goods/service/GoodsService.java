@@ -1,6 +1,7 @@
 package seproject.website.goods.goods.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import seproject.website.goods.goods.dao.GoodsDao;
 import seproject.website.goods.goods.domain.Goods;
@@ -104,6 +105,22 @@ public class GoodsService {
 			return goodsDao.findByGid(gid);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		}
+	}
+
+	public PageBean<Goods> myGoods(String userId, int pc){
+		try {
+			return goodsDao.findByUid(userId, pc);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void upgstatus(String gid, int gstatus){
+		try{
+			goodsDao.updategstatus(gid, gstatus);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

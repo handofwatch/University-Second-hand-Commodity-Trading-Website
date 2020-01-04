@@ -35,7 +35,7 @@
 		<table>
 			<tr>
 				<td colspan="3">
-<%--					卖家：${goods.author }--%>
+<%--					卖家：${goods.User }--%>
 				</td>
 			</tr>
 			<tr>
@@ -44,6 +44,8 @@
 				</td>
 			</tr>
 		</table>
+
+<c:if test="${(goods.gstatus eq 5)}">
 		<div class="divForm">
 			<form id="form1" action="<c:url value='/CartItemServlet'/>" method="post">
 				<input type="hidden" name="method" value="add"/>
@@ -58,6 +60,7 @@
 				</form>
 				<a id="btn2" href="javascript:$('#form2').submit();"></a>
 			</div>
+</c:if>
 		</ul>
 	</div>
   </div>

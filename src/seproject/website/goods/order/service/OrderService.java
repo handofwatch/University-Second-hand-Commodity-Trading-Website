@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import seproject.website.goods.order.dao.OrderDao;
 import seproject.website.goods.order.domain.Order;
+import seproject.website.goods.order.domain.OrderItem;
 import seproject.website.goods.pager.PageBean;
 import cn.itcast.jdbc.JdbcUtils;
 
@@ -12,12 +13,12 @@ public class OrderService {
 	
 	/**
 	 * 修改订单状态
-	 * @param oid
+	 * @param orderItemId
 	 * @param status
 	 */
-	public void updateStatus(String oid, int status) {
+	public void updateStatus(String orderItemId, int status) {
 		try {
-			orderDao.updateStatus(oid, status);
+			orderDao.updateStatus(orderItemId, status);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -130,4 +131,23 @@ public class OrderService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public OrderItem findByGid(String gid) {
+		try {
+			OrderItem orderItem = orderDao.findByGid(gid);
+			return orderItem;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public String findGid(String orderitemid) {
+		try {
+			String gid = orderDao.findGid(orderitemid);
+			return gid;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }
