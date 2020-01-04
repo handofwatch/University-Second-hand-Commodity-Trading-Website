@@ -53,7 +53,7 @@ public class CartItemService {
 	 * 添加条目
 	 * @param cartItem
 	 */
-	public void add(CartItem cartItem) {
+	public String add(CartItem cartItem) {
 		try {
 			/*
 			 * 1. 使用uid和gid去数据库中查询这个条目是否存在
@@ -63,8 +63,9 @@ public class CartItemService {
 					cartItem.getGoods().getGid());
 			if(_cartItem == null) {//如果原来没有这个条目，那么添加条目
 				cartItem.setCartItemId(CommonUtils.uuid());
-				cartItemDao.addCartItem(cartItem);
+				return cartItemDao.addCartItem(cartItem);
 			}
+			else {return cartItem.getCartItemId();}
 		} catch(Exception e) {
 			throw new RuntimeException(e);
 		}

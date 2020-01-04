@@ -285,11 +285,11 @@ public class OrderServlet extends BaseServlet {
 		Goods goods = goodsService.findByGid(gid);
 		cartItem.setGoods(goods);
 		cartItem.setUser(user);
-		cartItemService.add(cartItem);
+		String cartItemId = cartItemService.add(cartItem);
 		List<Goods> goodsList = new ArrayList<>();
 		goodsList.add(cartItem.getGoods());
 		req.setAttribute("GoodsList", goodsList);
-		req.setAttribute("cartItemIds",cartItem.getCartItemId());
+		req.setAttribute("cartItemIds",cartItemId);
 
 		return "f:/jsps/cart/showitem.jsp";
 	}

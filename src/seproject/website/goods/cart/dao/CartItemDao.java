@@ -112,15 +112,17 @@ public class CartItemDao {
 	/**
 	 * 添加条目
 	 * @param cartItem
-	 * @throws SQLException 
+	 * @throws SQLException
+     * @return
 	 */
-	public void addCartItem(CartItem cartItem) throws SQLException {
+	public String addCartItem(CartItem cartItem) throws SQLException {
 		String sql = "insert into t_cartitem(cartItemId, gid, uid)" +
 				" values(?,?,?)";
 		Object[] params = {cartItem.getCartItemId(),
 				cartItem.getGoods().getGid(), cartItem.getUser().getUid()};
 		qr.update(sql, params);
-	}
+        return cartItem.getCartItemId();
+    }
 	
 	/*
 	 * 把一个Map映射成一个Cartitem
