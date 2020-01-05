@@ -22,7 +22,7 @@
     <h2 style="text-align: center;">分类列表</h2>
     <table align="center" border="1" cellpadding="0" cellspacing="0">
     	<caption class="captionAddOneLevel">
-    	  <a href="<c:url value='/adminjsps/admin/category/add.jsp'/>">添加一级分类</a>
+    	  <a href="<c:url value='/adminjsps/admin/category/add.jsp'/>">添加分类</a>
     	</caption>
     	<tr class="trTitle">
     		<th>分类名称</th>
@@ -31,11 +31,11 @@
     	</tr>
 		<c:forEach items="${category}" var="category">
     	<tr class="trTwoLevel">
-    		<td>${cname }</td>
-    		<td>${cdesc }</td>
+    		<td>${category.cname }</td>
+    		<td>${category.cdesc }</td>
     		<td width="200px;" align="right">
-    		  <a href="<c:url value='/admin/AdminCategoryServlet?method=editCategoryPre&cid=${cid }'/>">修改</a>
-    		  <a onclick="return confirm('您是否真要删除该分类？')" href="<c:url value='/admin/AdminCategoryServlet?method=deleteChild&cid=${cid }'/>">删除</a>
+    		  <a href="<c:url value='/admin/AdminCategoryServlet?method=editPre&cid=${category.cid }'/>">修改</a>
+    		  <a onclick="return confirm('您是否真要删除该分类？')" href="<c:url value='/admin/AdminCategoryServlet?method=delete&cid=${category.cid }'/>">删除</a>
     		</td>
     	</tr>
         </c:forEach>

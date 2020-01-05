@@ -39,9 +39,9 @@
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post" onsubmit="return checkForm()">
     	<input type="hidden" name="cid" value="${category.cid }"/>
-    	<input type="hidden" name="method" value="editParent"/>
+    	<input type="hidden" name="method" value="edit"/>
     	分类名称：<input type="text" name="cname" id="cname" value="${category.cname }"/><br/>
-    	分类描述：<textarea rows="5" cols="50" id="desc" name="desc">${category.desc }</textarea><br/>
+    	分类描述：<textarea rows="5" cols="50" id="cdesc" name="cdesc">${category.cdesc }</textarea><br/>
     	<input type="submit" value="修改分类"/>
     	<input type="button" value="返回" onclick="history.go(-1)"/>
     </form>

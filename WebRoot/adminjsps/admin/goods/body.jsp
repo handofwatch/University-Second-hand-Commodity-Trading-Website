@@ -22,7 +22,7 @@
 <h1 align="center">商品管理</h1>
 <p align="center">
 <a href="<c:url value='/admin/AdminGoodsServlet?method=addPre'/>" style="margin: 20px; font-size: 20px;">添加商品</a>
-<a href="<c:url value='/adminjsps/admin/goods/gj.jsp'/>" style="margin: 20px; font-size: 20px;">高级搜索</a>
+<a href="<c:url value='/adminjsps/admin/goods/gj.jsp'/>" style="margin: 20px; font-size: 20px;">搜索商品</a>
 </p>
   </body>
 </html>

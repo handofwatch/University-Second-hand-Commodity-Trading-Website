@@ -21,7 +21,7 @@
 				alert("分类名不能为空！");
 				return false;
 			}
-			if(!$("#desc").val()) {
+			if(!$("#cdesc").val()) {
 				alert("分类描述不能为空！");
 				return false;
 			}
@@ -41,11 +41,11 @@
   <div style="margin-left: 480px">
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post" onsubmit="return checkForm()">
-    	<input type="hidden" name="method" value="addParent"/>
+    	<input type="hidden" name="method" value="add"/>
 		<div style="width:100%; background-color:#feeebd; height: 32px; "></div>
     	分类名称：<input type="text" name="cname" id="cname"/><br/>
 		<div style="width:100%; background-color:#feeebd; height: 24px; "></div>
-    	分类描述：<textarea rows="5" cols="50" name="desc" id="desc"></textarea><br/>
+    	分类描述：<textarea rows="5" cols="50" name="cdesc" id="cdesc"></textarea><br/>
 		<div style="width:100%; background-color:#feeebd; height: 50px; "></div>
     	<input style="margin-left: 168px" type="submit" value="添加分类"/>
     	<input style="margin-left: 40px" type="button" value="返回" onclick="history.go(-1)"/>

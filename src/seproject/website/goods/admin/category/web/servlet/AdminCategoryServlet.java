@@ -97,12 +97,7 @@ public class AdminCategoryServlet extends BaseServlet {
 	 */
 	public String delete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*
-		 * 1. 获取链接参数cid，它是一个1级分类的id
-		 * 2. 通过cid，查看该父分类下子分类的个数
-		 * 3. 如果大于零，说明还有子分类，不能删除。保存错误信息，转发到msg.jsp
-		 * 4. 如果等于零，删除之，返回到list.jsp
-		 */
+
 		String cid = req.getParameter("cid");
 		categoryService.delete(cid);
 

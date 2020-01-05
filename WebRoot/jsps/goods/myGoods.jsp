@@ -34,7 +34,6 @@
                 <p><a id="goodsname" title="${goods.gname }" href="<c:url value='/GoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
             </div>
         </li>
-        <a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
 
         <c:choose>
             <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
@@ -44,9 +43,13 @@
             <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
         </c:choose>
 
+        <c:if test="${(goods.gstatus eq 5)|| (goods.gstatus eq 4) }">
+        <a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
+    </c:if>
+
         <c:if test="${goods.gstatus eq 5 }">
-            <a id="edit" href ="<c:url value='/GoodsServlet?method=editpre&gid=${goods.gid }'/>">编辑商品</a>
-        </c:if>
+        <a id="edit" href ="<c:url value='/GoodsServlet?method=editpre&gid=${goods.gid }'/>">编辑商品</a>
+    </c:if>
 
         <c:if test="${goods.gstatus eq 2 }">
             <a href="<c:url value='/OrderServlet?method=sendout&gid=${goods.gid }'/>"> 如果您已发货，请点击这里 </a><br/>
