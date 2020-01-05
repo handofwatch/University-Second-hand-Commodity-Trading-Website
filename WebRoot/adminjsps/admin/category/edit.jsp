@@ -34,16 +34,22 @@
   </head>
   
   <body>
+  <div style="margin-left: 480px">
+	  <div style="width:100%; background-color:#feeebd; height: 60px; "></div>
     <h3>修改分类</h3>
     <h1></h1>
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post" onsubmit="return checkForm()">
     	<input type="hidden" name="cid" value="${category.cid }"/>
     	<input type="hidden" name="method" value="edit"/>
+		<div style="width:100%; background-color:#feeebd; height: 32px; "></div>
     	分类名称：<input type="text" name="cname" id="cname" value="${category.cname }"/><br/>
+		<div style="width:100%; background-color:#feeebd; height: 24px; "></div>
     	分类描述：<textarea rows="5" cols="50" id="cdesc" name="cdesc">${category.cdesc }</textarea><br/>
-    	<input type="submit" value="修改分类"/>
-    	<input type="button" value="返回" onclick="history.go(-1)"/>
+		<div style="width:100%; background-color:#feeebd; height: 50px; "></div>
+		<input style="margin-left: 168px" type="submit" value="修改分类"/>
+    	<input style="margin-left: 40px" type="button" value="返回" onclick="history.go(-1)"/>
     </form>
+  </div>
   </body>
 </html>
