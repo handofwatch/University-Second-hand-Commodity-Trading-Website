@@ -61,17 +61,22 @@ $(function () {
   </head>
   
   <body>
-  <div>
+  <div style="border: 5px solid #efeae5;width: 880px;height: 430px;margin-left: 50px;margin-top: 20px;">
    <p style="font-weight: 900; color: red;">${msg }</p>
    <form action="<c:url value='/AddGoodsServlet'/>" enctype="multipart/form-data" method="POST" id="form">
     <div>
 	    <ul>
-	    	<li>商品名：　<input id="gname" type="text" name="gname" value="请输入您的商品名" style="width:500px;"/></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
+			<li>商品名：　<input id="gname" type="text" name="gname" value="请输入您的商品名" style="width:500px;"/></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
 	    	<li>大图1：　<input id="image_w" type="file" name="image_w"/></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
 			<li>大图2：　<input id="image_w2" type="file" name="image_w2"/></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
 	    	<li>定价：　<input id="price" type="text" name="price" value="59.0" style="width:50px;"/>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
+		<div style="margin-left: 34px;margin-top: 30px">
 		<table>
 			<tr>
 				<td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:100px;"/></td>
@@ -89,12 +94,13 @@ $(function () {
 			</tr>
 			<tr>
 				<td>
-					<input type="button" id="btn" class="btn" value="发布商品">
+					<input style="margin-left: 80px;margin-top: 30px" type="button" id="btn" class="btn" value="发布商品">
 				</td>
 				<td></td>
 				<td></td>
 			</tr>
 		</table>
+		</div>
 	</div>
    </form>
   </div>

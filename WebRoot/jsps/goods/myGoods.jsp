@@ -32,28 +32,28 @@
                     <span class="price_n">&yen;${goods.price }</span>
                 </p>
                 <p><a id="goodsname" title="${goods.gname }" href="<c:url value='/GoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
+                <p style="margin-top: 5px">
+                    <c:choose>
+                        <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
+                        <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
+                        <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
+                        <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
+                        <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
+                    </c:choose>
+                <p>
+                    <c:if test="${goods.gstatus eq 5 }">
+                 <a id="edit" href ="<c:url value='/GoodsServlet?method=editpre&gid=${goods.gid }'/>">编辑商品</a>
+                    </c:if>
+                </p>
+                <p>
+                    <c:if test="${goods.gstatus eq 2 }">
+                        <a href="<c:url value='/OrderServlet?method=sendout&gid=${goods.gid }'/>"> 如果您已发货，请点击这里 </a><br/>
+                    </c:if>
+                </p>
+                <p><a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a></p>
             </div>
         </li>
 
-        <c:choose>
-            <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
-            <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
-            <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
-            <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
-            <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
-        </c:choose>
-
-        <c:if test="${(goods.gstatus eq 5)|| (goods.gstatus eq 4) }">
-        <a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
-    </c:if>
-
-        <c:if test="${goods.gstatus eq 5 }">
-        <a id="edit" href ="<c:url value='/GoodsServlet?method=editpre&gid=${goods.gid }'/>">编辑商品</a>
-    </c:if>
-
-        <c:if test="${goods.gstatus eq 2 }">
-            <a href="<c:url value='/OrderServlet?method=sendout&gid=${goods.gid }'/>"> 如果您已发货，请点击这里 </a><br/>
-        </c:if>
     </c:forEach>
 
 

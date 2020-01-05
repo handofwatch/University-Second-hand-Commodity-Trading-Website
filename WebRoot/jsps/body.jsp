@@ -48,6 +48,12 @@ a {text-decoration: none;}
       <span><a target="_top" href="<c:url value='/OrderServlet?method=myOrders'/>">·查看订单</a></span>
   </div>
   <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/GoodsServlet?method=addPre'/>">·发布商品</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/GoodsServlet?method=myGoods'/>">·查看我的商品</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
       <span><a target="_top" href="<c:url value='/jsps/user/pwd.jsp'/>">·修改密码</a></span>
   </div>
   <div style="font-size: 30px;font-family: 黑体;margin: 50px;">

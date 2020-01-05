@@ -83,7 +83,6 @@
 	</c:if>
 </c:forEach>
 
-
 					</table>
 				</dd>
 			</dl>

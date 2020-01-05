@@ -60,52 +60,46 @@
 </head>
 
 <body>
-<div>
+<div style="border: 5px solid #efeae5;width: 880px;height: 430px;margin-left: 50px;margin-top: 20px;">
     <p style="font-weight: 900; color: red;">${msg }</p>
     <form action="<c:url value='/EditGoodsServlet'/>" enctype="multipart/form-data" method="POST" id="form">
-        <input id="gid" type="hidden" name="gid" value=${goods.gid} />
         <div>
             <ul>
-                <li>商品名：　<input id="gname" type="text" name="gname" value=${goods.gname} style="width:500px;"/></li>
-                <li>大图1：　<input id="image_w" type="file" name="image_w"/>不上传即维持原图</li>
+                <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
+                <li>商品名：　<input id="gname" type="text" name="gname" value="请输入您的商品名" style="width:500px;"/></li>
+                <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
+                <li>大图1：　<input id="image_w" type="file" name="image_w"/></li>
+                <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
                 <li>大图2：　<input id="image_w2" type="file" name="image_w2"/></li>
-                <li>定价：　<input id="price" type="text" name="price" value=${goods.price} style="width:50px;"/>
+                <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
+                <li>定价：　<input id="price" type="text" name="price" value="59.0" style="width:50px;"/>
             </ul>
             <hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
-            <table>
-                <tr>
-                    <td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value=${goods.gdesc} style="width:100px;"/></td>
-                </tr>
-                <tr>
-                    <td>
-                        一级分类：<select name="cid" id="cid">
-                        <option value="">====请选择分类====</option>
-                        <c:forEach items="${category }" var="category">
-                            <option value="${category.cid }">${category.cname }</option>
-                        </c:forEach>
+            <div style="margin-left: 34px;margin-top: 30px">
+                <table>
+                    <tr>
+                        <td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:100px;"/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            分类：<select name="cid" id="cid">
+                            <option value="">====请选择分类====</option>
+                            <c:forEach items="${category }" var="category">
+                                <option value="${category.cid }">${category.cname }</option>
+                            </c:forEach>
 
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        商品状态：<select name="gstatus" id="gstatus">
-
-                        <option value="">====请选择状态====</option>
-                        <option value="4">已售出 </option>
-                        <option value="5">未售出</option>
-
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="button" id="btn" class="btn" value="更新商品">
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input style="margin-left: 80px;margin-top: 30px" type="button" id="btn" class="btn" value="发布商品">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </form>
 </div>
