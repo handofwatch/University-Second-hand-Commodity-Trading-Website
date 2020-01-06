@@ -3,7 +3,6 @@ package seproject.website.goods.order.web.servlet;
 
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 
 import javax.servlet.ServletException;
@@ -90,13 +89,24 @@ public class OrderServlet extends BaseServlet {
 				req.setAttribute("msg", "状态不对，不能支付！");
 				return "f:/jsps/msg.jsp";
 			}
-			orderService.updateStatus(itemId, 2);//设置状态为等待卖家发货！
-			goodsService.upgstatus(gid, 2);
+			try {
+	            //这里打成一个事物
+				orderService.updateStatus(itemId, 2);//设置状态为等待卖家发货！
+				goodsService.upgstatus(gid, 2);
+				pay();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "您的订单已成功支付！");
 		return "f:/jsps/msg.jsp";
 
+	}
+
+	private String pay(){
+
+		return "买家将钱寄存在网站";
 	}
 	
 	/**
@@ -150,11 +160,22 @@ public class OrderServlet extends BaseServlet {
 			req.setAttribute("msg", "状态不对，不能确认收货！");
 			return "f:/jsps/msg.jsp";
 		}
-		orderService.updateStatus(itemId, 4);//设置状态为交易成功！
-		goodsService.upgstatus(gid, 4);
+		try {
+			//这里也打成一个事物
+
+			orderService.updateStatus(itemId, 4);//设置状态为交易成功！
+			goodsService.upgstatus(gid, 4);
+			giveSellerMoney();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "恭喜，交易成功！");
 		return "f:/jsps/msg.jsp";		
+	}
+
+	private String giveSellerMoney(){
+		return "给卖家转买家的钱";
 	}
 	
 	/**
@@ -297,11 +318,18 @@ public class OrderServlet extends BaseServlet {
 	public String sendout(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String gid = req.getParameter("gid");
-		Goods goods = goodsService.findByGid(gid);
 		OrderItem orderitem = orderService.findByGid(gid);
 		orderService.updateStatus(orderitem.getOrderItemId(), 3);
 		goodsService.upgstatus(gid, 3);
 		req.setAttribute("msg", "您已成功修改状态");
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				if(orderitem.getOrderstatus() == 3)
+				orderService.updateStatus(orderitem.getOrderItemId(),4 );
+				goodsService.upgstatus(gid,4 ) ;
+			}
+				     }, 604800000);
 
 		return "f:/jsps/msg.jsp";
 	}

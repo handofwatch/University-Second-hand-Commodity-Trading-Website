@@ -29,7 +29,7 @@
 <table align="center">
 	<tr>
 		<td>商品名：</td>
-		<td><input type="text" name="bname"/></td>
+		<td><input type="text" name="gname"/></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

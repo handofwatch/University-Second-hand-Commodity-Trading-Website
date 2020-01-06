@@ -211,8 +211,8 @@ public class EditGoodsServlet extends HttpServlet {
     private void error(String msg, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("msg", msg);
-        request.setAttribute("parents", new CategoryService().findAll());//所有一级分类
-        request.getRequestDispatcher("/adminjsps/admin/goods/add.jsp").
+        request.setAttribute("category", new CategoryService().findAll());//所有一级分类
+        request.getRequestDispatcher("/jsps/goods/add.jsp").
                 forward(request, response);
     }
 

@@ -37,6 +37,10 @@
     <servlet-class>seproject.website.goods.goods.web.servlet.EditGoodsServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>AdminEditGoodsServlet</servlet-name>
+    <servlet-class>seproject.website.goods.admin.goods.web.servlet.AdminEditGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>CartItemServlet</servlet-name>
     <servlet-class>seproject.website.goods.cart.web.servlet.CartItemServlet</servlet-class>
   </servlet>
@@ -83,6 +87,10 @@
   <servlet-mapping>
     <servlet-name>EditGoodsServlet</servlet-name>
     <url-pattern>/EditGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminEditGoodsServlet</servlet-name>
+    <url-pattern>/admin/AdminEditGoodsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CartItemServlet</servlet-name>

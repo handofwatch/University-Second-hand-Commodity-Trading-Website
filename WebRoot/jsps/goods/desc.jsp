@@ -27,6 +27,7 @@
   <div class="divBookName">${goods.gname }</div>
   <div>
     <img align="top" src="<c:url value='/${goods.image_w }'/>" class="img_image_w"/>
+	  <img  src="<c:url value='/${goods.image_w2 }'/>" class="img_image_w2"/>
     <div class="divBookDesc">
 	    <ul>
 	    	<li>商品编号：${goods.gid }</li>
@@ -45,7 +46,7 @@
 			</tr>
 		</table>
 
-<c:if test="${(goods.gstatus eq 5)}">
+<c:if test="${(goods.gstatus eq 5) and (sessionScope.user.uid != goods.user.uid)}">
 		<div class="divForm">
 			<form id="form1" action="<c:url value='/CartItemServlet'/>" method="post">
 				<input type="hidden" name="method" value="add"/>

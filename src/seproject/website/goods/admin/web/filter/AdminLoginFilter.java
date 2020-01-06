@@ -16,7 +16,7 @@ public class AdminLoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		Object admin = req.getSession().getAttribute("admin");
 		if(admin == null) {
-			request.setAttribute("msg", "您还没有登录，不要瞎遛达！");
+			request.setAttribute("msg", "您还没有登录");
 			request.getRequestDispatcher("/adminjsps/login.jsp").forward(request, response);
 		} else {
 			chain.doFilter(request, response);

@@ -2,14 +2,20 @@ package seproject.website.goods.admin.goods.web.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.itcast.commons.CommonUtils;
+import cn.itcast.mail.Mail;
+import cn.itcast.mail.MailUtils;
 import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.goods.service.GoodsService;
 import seproject.website.goods.category.domain.Category;
@@ -31,19 +37,24 @@ public class AdminGoodsServlet extends BaseServlet {
 	 */
 	public String delete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String bid = req.getParameter("gid");
+		String gid = req.getParameter("gid");
 		
 		/*
 		 * 删除图片
 		 */
-		Goods goods = goodsService.load(bid);
+		Goods goods = goodsService.load(gid);
 		String savepath = this.getServletContext().getRealPath("/");//获取真实的路径
 		new File(savepath, goods.getImage_w()).delete();//删除文件
 		new File(savepath, goods.getImage_b()).delete();//删除文件
+		new File(savepath, goods.getImage_w2()).delete();//删除文件
 		
-		goodsService.delete(bid);//删除数据库的记录
+		goodsService.delete(gid);//删除数据库的记录
+
+		String email = goods.getUser().getEmail();
+
+		sendemail(email);
 		
-		req.setAttribute("msg", "删除图书成功！");
+		req.setAttribute("msg", "删除商品成功！");
 		return "f:/adminjsps/msg.jsp";
 	}
 	
@@ -142,15 +153,11 @@ public class AdminGoodsServlet extends BaseServlet {
 		 * 1. 通过service得到所有的分类
 		 * 2. 保存到request中，转发到left.jsp
 		 */
-		List<Category> parents = categoryService.findAll();
-		req.setAttribute("category", parents);
+		List<Category> categoryList = categoryService.findAll();
+		req.setAttribute("category", categoryList);
 		return "f:/adminjsps/admin/goods/left.jsp";
 	}
-	
-	
-	
-	
-	
+
 	
 	
 	/**
@@ -208,9 +215,8 @@ public class AdminGoodsServlet extends BaseServlet {
 		 * 3. 获取查询条件，本方法就是cid，即分类的id
 		 */
 		String cid = req.getParameter("cid");
-		/*
-		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
-		 */
+
+
 		PageBean<Goods> pb = goodsService.findByCategory(cid, pc);
 		/*
 		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
@@ -255,5 +261,45 @@ public class AdminGoodsServlet extends BaseServlet {
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
 		return "f:/adminjsps/admin/goods/list.jsp";
+	}
+
+//	public String editpre(HttpServletRequest req, HttpServletResponse resp)
+//			throws ServletException, IOException {
+//		String gid = req.getParameter("gid");
+//		Goods goods = goodsService.load(gid);
+//		req.setAttribute("goods", goods);
+//		List<Category> category = categoryService.findAll();
+//		req.setAttribute("category", category);
+//		return "/adminjsps/admin/goods/edit.jsp";
+//	}
+
+	private void sendemail(String email){
+		Properties prop = new Properties();
+		try {
+			prop.load(this.getClass().getClassLoader().getResourceAsStream("email_template.properties"));
+		} catch (IOException e1) {
+			throw new RuntimeException(e1);
+		}
+		/*
+		 * 登录邮件服务器，得到session
+		 */
+		String host = prop.getProperty("host");//服务器主机名
+		String name = prop.getProperty("username");//登录名
+		String pass = prop.getProperty("password");//登录密码
+		Session session = MailUtils.createSession(host, name, pass);
+
+		/*
+		 * 创建Mail对象
+		 */
+		String from = prop.getProperty("from");
+		String subject = prop.getProperty("subjectdelete");
+		String content = prop.getProperty("contentdelete");
+		Mail mail = new Mail(from, email, subject, content);
+
+		try {
+			MailUtils.send(session, mail);
+		} catch (MessagingException | IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
