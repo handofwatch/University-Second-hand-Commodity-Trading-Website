@@ -45,8 +45,15 @@
 				</td>
 			</tr>
 		</table>
+			<c:choose>
+				<c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
+				<c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
+				<c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
+				<c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
+				<c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
+			</c:choose>
 
-<c:if test="${(goods.gstatus eq 5) and (sessionScope.user.uid != goods.user.uid)}">
+<c:if test="${goods.gstatus eq 5}">
 		<div class="divForm">
 			<form id="form1" action="<c:url value='/CartItemServlet'/>" method="post">
 				<input type="hidden" name="method" value="add"/>
