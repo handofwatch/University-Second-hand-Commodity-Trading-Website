@@ -22,13 +22,13 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/goods/desc.css'/>">
 	<script src="<c:url value='/jsps/js/goods/desc.js'/>"></script>
   </head>
-  
+
   <body>
   <div class="divBookName">${goods.gname }</div>
   <div>
     <img align="top" src="<c:url value='/${goods.image_w }'/>" class="img_image_w"/>
 	  <img  src="<c:url value='/${goods.image_w2 }'/>" class="img_image_w2"/>
-	  <div style="border: 5px solid #efeae5;width: 880px;height: 500px;margin-top: 20px;">
+	  <div style="border: 5px solid #efeae5;width: 880px;height: 600px;margin-top: 20px;">
 	    <div>
 			<div style="width:100%; background-color:#FFFFFF; height: 15px; "></div>
 	    	<li>商品编号：${goods.gid }</li>

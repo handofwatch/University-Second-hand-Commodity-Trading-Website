@@ -61,7 +61,7 @@ $(function () {
   </head>
   
   <body>
-  <div style="border: 5px solid #efeae5;width: 880px;height: 430px;margin-left: 50px;margin-top: 20px;">
+  <div style="border: 5px solid #efeae5;width: 880px;height: 580px;margin-left: 50px;margin-top: 20px;">
    <p style="font-weight: 900; color: red;">${msg }</p>
    <form action="<c:url value='/AddGoodsServlet'/>" enctype="multipart/form-data" method="POST" id="form">
     <div>
@@ -79,7 +79,10 @@ $(function () {
 		<div style="margin-left: 34px;margin-top: 30px">
 		<table>
 			<tr>
-				<td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:480px"/></td>
+				<div style="margin-left: 50px">
+				描述：<textarea rows="5" cols="80" type="text" id="gdesc" name="gdesc"
+												   value="请您添加商品描述" style="width:480px;height: 120px"/></textarea></td>
+				</div>
 			</tr>
 			<tr>
 				<td>
