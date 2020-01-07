@@ -31,19 +31,20 @@
   <div class="inner">
     <a class="pic" href="<c:url value='/admin/AdminGoodsServlet?method=load&gid=${goods.gid }'/>"><img src="<c:url value='/${goods.image_b }'/>" border="0"/></a>
     <p class="price" >
-		<span class="price_r">&yen;${goods.price }</span>
+		<span style="color: #e32f10; padding-right: 10px; font-family: Arial;font-weight: bold">&yen;${goods.price }</span>
 	</p>
 	<p><a id="gname" title="${goods.gname }" href="<c:url value='/admin/AdminGoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
-	  <div style="width:100%; background-color:#FFFFFF; height: 35px; "></div>
+	  <c:choose>
+		  <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
+		  <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
+		  <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
+		  <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
+		  <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
+	  </c:choose>
+
+	  <div style="width:100%; background-color:#FFFFFF; height: 15px; "></div>
 	  <a class="delete" href="<c:url value='/admin/AdminGoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
   </div>
-	 <c:choose>
-		 <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
-		 <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
-		 <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
-		 <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
-		 <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
-	 </c:choose>
 
  </li>
 </c:forEach>

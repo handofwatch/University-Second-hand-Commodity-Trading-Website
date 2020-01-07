@@ -66,7 +66,7 @@
         <div>
             <ul>
                 <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
-                <li>商品名：　<input id="gname" type="text" name="gname" value="请输入您的商品名" style="width:500px;"/></li>
+                <li>商品名：　<input id="gname" type="text" name="gname" value="请输入您的商品名" style="width:480px;"/></li>
                 <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
                 <li>大图1：　<input id="image_w" type="file" name="image_w"/></li>
                 <div style="width:100%; background-color:#FFFFFF; height: 20px; "></div>
@@ -78,7 +78,7 @@
             <div style="margin-left: 34px;margin-top: 30px">
                 <table>
                     <tr>
-                        <td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:100px;"/></td>
+                        <td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:400px"/></td>
                     </tr>
                     <tr>
                         <td>

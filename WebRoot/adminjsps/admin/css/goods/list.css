@@ -4,7 +4,7 @@ li {float: left; width: 240px; height: 319px; line-height: 18px; position: relat
 li div {margin-bottom:1px;margin-left: 10px;}
 
 body,ul, li, p,img, div { margin: 0; padding: 0; list-style-type: none; font-size: 12px;}
-.price {padding-bottom: 3px; color: #878787; }
+.price {padding-bottom: 3px; color: #e32f10; }
 .price_n {color: #c30; font-weight: bold; padding-right: 10px; font-family: Arial; }
 .price_s {color: #c30; font-family: Arial; }
 .price_r {color: #e32f10; padding-right: 10px; font-family: Arial; }

@@ -33,7 +33,7 @@ public class GoodsDao {
 	}
 	
 	/**
-	 * 修改图书
+	 * 修改商品
 	 * @throws SQLException 
 	 */
 	public void edit(Goods goods) throws SQLException {
@@ -95,7 +95,7 @@ public class GoodsDao {
 	}
 	
 	/**
-	 * 按书名模糊查询
+	 * 按商品名模糊查询
 	 * @param gname
 	 * @param pc
 	 * @return
@@ -107,7 +107,7 @@ public class GoodsDao {
 		return findByCriteria(exprList, pc);
 	}
 	
-	/**没看懂
+	/**
 	 * 通用的查询方法
 	 * @param exprList
 	 * @param pc
@@ -179,7 +179,7 @@ public class GoodsDao {
 	}
 
 	/**
-	 * 添加图书
+	 * 添加商品
 	 * @param
 	 * @throws SQLException 
 	 */

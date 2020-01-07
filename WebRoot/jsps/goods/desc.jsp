@@ -28,10 +28,13 @@
   <div>
     <img align="top" src="<c:url value='/${goods.image_w }'/>" class="img_image_w"/>
 	  <img  src="<c:url value='/${goods.image_w2 }'/>" class="img_image_w2"/>
-    <div class="divBookDesc">
-	    <ul>
+	  <div style="border: 5px solid #efeae5;width: 880px;height: 500px;margin-top: 20px;">
+	    <div>
+			<div style="width:100%; background-color:#FFFFFF; height: 15px; "></div>
 	    	<li>商品编号：${goods.gid }</li>
-				<li>价格：<span class="price_n">&yen;${goods.price }</span></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 6px; "></div>
+			<li>价格：<span class="price_n">&yen;${goods.price }</span></li>
+			<div style="width:100%; background-color:#FFFFFF; height: 6px; "></div>
 		<hr class="hr1"/>
 		<table>
 			<tr>
@@ -45,6 +48,7 @@
 				</td>
 			</tr>
 		</table>
+			<div style="margin-left: 50px;margin-top: 20px;font-size: 20px;font-weight: bolder;color:#b83f18">
 			<c:choose>
 				<c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
 				<c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
@@ -52,6 +56,7 @@
 				<c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
 				<c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
 			</c:choose>
+		</div>
 
 <c:if test="${goods.gstatus eq 5}">
 		<div class="divForm">

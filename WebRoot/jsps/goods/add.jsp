@@ -79,7 +79,7 @@ $(function () {
 		<div style="margin-left: 34px;margin-top: 30px">
 		<table>
 			<tr>
-				<td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:100px;"/></td>
+				<td colspan="3">描述：<input type="text" id="gdesc" name="gdesc" value="请您添加商品描述" style="width:480px"/></td>
 			</tr>
 			<tr>
 				<td>
