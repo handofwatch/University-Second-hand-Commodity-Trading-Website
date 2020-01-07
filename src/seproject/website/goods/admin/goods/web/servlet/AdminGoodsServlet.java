@@ -98,14 +98,12 @@ public class AdminGoodsServlet extends BaseServlet {
 		/*
 		 * 1. 获取bid，得到Book对象，保存之
 		 */
-		String bid = req.getParameter("bid");
-		Goods goods = goodsService.load(bid);
+		String gid = req.getParameter("gid");
+		Goods goods = goodsService.load(gid);
 		req.setAttribute("goods", goods);
 		
-		/*
-		 * 2. 获取所有一级分类，保存之
-		 */
-		req.setAttribute("parents", categoryService.findAll());
+
+		req.setAttribute("category", categoryService.findAll());
 		/*
 		 * 3. 获取当前图书所属的一级分类下所有2级分类
 		 */

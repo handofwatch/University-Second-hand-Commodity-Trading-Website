@@ -40,6 +40,13 @@
 	  <div style="width:100%; background-color:#FFFFFF; height: 35px; "></div>
 	  <a class="delete" href="<c:url value='/admin/AdminGoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
   </div>
+	 <c:choose>
+		 <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
+		 <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
+		 <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
+		 <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
+		 <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
+	 </c:choose>
 
  </li>
 </c:forEach>
