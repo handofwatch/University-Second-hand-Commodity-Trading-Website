@@ -29,6 +29,7 @@
 		<a href="<c:url value='/admin/AdminCategoryServlet?method=findAll'/>">|分类管理</a>
 		<a href="<c:url value='/adminjsps/admin/goods/main.jsp'/>">|商品管理</a>
 		<a href="<c:url value='/admin/AdminOrderServlet?method=findAll'/>">|订单管理|</a>
+		<a href="<c:url value='/adminjsps/addNewadmin.jsp '/>">|添加新管理员|</a>
 	</span>
 	<a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">退出</a>
 </div>
