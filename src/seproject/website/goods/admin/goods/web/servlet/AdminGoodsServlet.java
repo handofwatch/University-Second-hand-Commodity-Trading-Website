@@ -20,6 +20,8 @@ import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.goods.service.GoodsService;
 import seproject.website.goods.category.domain.Category;
 import seproject.website.goods.category.service.CategoryService;
+import seproject.website.goods.order.domain.OrderItem;
+import seproject.website.goods.order.service.OrderService;
 import seproject.website.goods.pager.PageBean;
 import cn.itcast.servlet.BaseServlet;
 
@@ -53,6 +55,10 @@ public class AdminGoodsServlet extends BaseServlet {
 		String email = goods.getUser().getEmail();
 
 		sendemail(email);
+		OrderService orderService = new OrderService();
+		OrderItem orderitem = orderService.findByGid(gid);
+		orderService.updateStatus(orderitem.getOrderItemId(),5);
+
 		
 		req.setAttribute("msg", "删除商品成功！");
 		return "f:/adminjsps/msg.jsp";

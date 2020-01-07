@@ -50,7 +50,11 @@
                         <a href="<c:url value='/OrderServlet?method=sendout&gid=${goods.gid }'/>"> 如果您已发货，请点击这里 </a><br/>
                     </c:if>
                 </p>
-                <p><a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a></p>
+                <p>
+                    <c:if test="${(goods.gstatus eq 4) || (goods.gstatus eq 5) }">
+                    <a id="delete" href ="<c:url value='/GoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
+                    </c:if>
+                </p>
             </div>
         </li>
 

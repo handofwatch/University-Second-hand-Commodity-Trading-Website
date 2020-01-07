@@ -32,6 +32,13 @@
 		<span class="price_n">&yen;${goods.price }</span>
 	</p>
 	<p><a id="goodsname" title="${goods.gname }" href="<c:url value='/GoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
+	  <p><c:choose>
+		  <c:when test="${goods.gstatus eq 1 }">等待买家付款</c:when>
+		  <c:when test="${goods.gstatus eq 2 }">请您发货</c:when>
+		  <c:when test="${goods.gstatus eq 3 }">正在等待买家确认收货</c:when>
+		  <c:when test="${goods.gstatus eq 4 }">交易已成功</c:when>
+		  <c:when test="${goods.gstatus eq 5 }">正在出售</c:when>
+	  </c:choose></p>
   </div>
   </li>
 </c:forEach>
