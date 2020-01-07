@@ -37,9 +37,10 @@
 		<span class="price_r">&yen;${goods.price }</span>
 	</p>
 	<p><a id="gname" title="${goods.gname }" href="<c:url value='/admin/AdminGoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
-
+	  <div style="width:100%; background-color:#FFFFFF; height: 35px; "></div>
+	  <a class="delete" href="<c:url value='/admin/AdminGoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
   </div>
-	 <a class="delete" href="<c:url value='/admin/AdminGoodsServlet?method=delete&gid=${goods.gid }'/>">立即删除</a>
+
  </li>
 </c:forEach>
 
