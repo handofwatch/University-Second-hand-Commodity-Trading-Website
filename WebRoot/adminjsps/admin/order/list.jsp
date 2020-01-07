@@ -51,7 +51,9 @@
 						<c:when test="${orderItem.orderstatus eq 4 }">(交易成功)</c:when>
 						<c:when test="${orderItem.orderstatus eq 5 }">(已取消)</c:when>
 					</c:choose>
+					<c:if test="${(orderItem.orderstatus eq 1) || (orderItem.orderstatus eq 2) ||(orderItem.orderstatus eq 3)||(orderItem.orderstatus eq 4)}">
                     <a href="${pageContext.request.contextPath}/admin/AdminOrderServlet?method=uporderstatus&orderItemId=${orderItem.orderItemId}">取消该订单项</a>
+					</c:if>
 				</div>
 			</c:forEach>
 			<div >
