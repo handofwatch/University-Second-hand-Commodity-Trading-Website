@@ -119,7 +119,7 @@ public class AdminOrderServlet extends BaseServlet {
 //	}
 //
 
-	public String uporderstatus(HttpServletRequest req, HttpServletResponse resp)
+	public String updateOrderStatus(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String itemid = req.getParameter("orderItemId");
 		orderService.updateStatus(itemid,5);
