@@ -31,6 +31,9 @@
       <span><a target="_top" href="<c:url value='/admin/AdminOrderServlet?method=findAll'/>">·订单管理</a></span>
   </div>
   <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
+      <span><a target="_top" href="<c:url value='/adminjsps/addNewadmin.jsp '/>">·添加新管理员</a></span>
+  </div>
+  <div style="font-size: 30px;font-family: 黑体;margin: 50px;">
       <span><a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">·退出当前账号</a></span>
   </div>
   <div style="margin: 0 auto;width:394px">
