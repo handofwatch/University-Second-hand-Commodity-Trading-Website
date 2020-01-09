@@ -3,7 +3,6 @@ package seproject.website.goods.goods.web.servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import seproject.website.goods.category.domain.Category;
 import seproject.website.goods.category.service.CategoryService;
 import seproject.website.goods.goods.domain.Goods;
@@ -11,7 +10,6 @@ import seproject.website.goods.goods.service.GoodsService;
 import seproject.website.goods.pager.PageBean;
 import cn.itcast.servlet.BaseServlet;
 import seproject.website.goods.user.domain.User;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -66,14 +64,14 @@ public class GoodsServlet extends BaseServlet {
     }
 
 
-    public String findByBname(HttpServletRequest req, HttpServletResponse resp)
+    public String findByGname(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         int pc = getPc(req);
 
         String url = getUrl(req);
 
-        String gname = req.getParameter("bname");
+        String gname ="枕头";//req.getParameter("gname");
 
         PageBean<Goods> pb = goodsService.findByGname(gname, pc);
 

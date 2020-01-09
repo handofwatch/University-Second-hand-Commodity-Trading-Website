@@ -33,7 +33,7 @@
 
 		<c:forEach items="${pb.beanList }" var="order">
 			<tr>
-
+		<div style="border: #0C0C0C thin solid;margin: 10px ">
 			<div class="layui=row" style="font-size: 15px;margin: 2px">
 				<div class="layui-col-md6">订单号：<a>${order.oid }</a></div>
 				<div class="layui-col-md6">下单时间：${order.ordertime }</div>
@@ -42,7 +42,7 @@
 
 			<c:forEach items="${order.orderItemList }" var="orderItem">
 				<table>
-				<div class="layui-row">
+				<div class="layui-row" style="border: thin black solid;margin: 5px">
 					<p>
 							订单项号:${orderItem.orderItemId}
 					</p>
@@ -63,10 +63,12 @@
 					</c:if>
 				</div>
 				</table>
+
 			</c:forEach>
 			<div >
 				<span class="price_t" style="font-size: 15px">总金额：&yen;${order.total }</span>&nbsp;&nbsp;
 			</div>
+		</div>
 		</c:forEach>
 		</tr>
 	</div>

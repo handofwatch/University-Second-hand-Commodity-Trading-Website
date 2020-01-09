@@ -27,16 +27,6 @@ public class GoodsService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-
-	public int findGoodsCountByCategory(String cid) {
-		try {
-			return goodsDao.findGoodsCountByCategory(cid);
-		} catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
 
 	public Goods load(String gid) {
 		try {

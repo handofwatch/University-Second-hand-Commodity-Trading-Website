@@ -13,10 +13,12 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	  <link rel="stylesheet" type="text/css" href="<c:url value='/layui/src/css/layui.css'/>" media="all">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
+	  <link rel="stylesheet" type="text/css" href="c:url value='/layui'">
 	<script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/goods/desc.css'/>">
@@ -59,20 +61,24 @@
 		</div>
 
 <c:if test="${goods.gstatus eq 5}">
-		<div class="divForm">
+	<div class="layui-row">
+		<div class="layui-col" style="padding: 20px">
 			<form id="form1" action="<c:url value='/CartItemServlet'/>" method="post">
 				<input type="hidden" name="method" value="add"/>
 				<input type="hidden" name="gid" value="${goods.gid }"/>
   			</form>
-  			<a id="btn" href="javascript:$('#form1').submit();"></a>
+<%--  			<a id="btn" href="javascript:$('#form1').submit();"></a>--%>
+			<button style="width:150px" class="layui-btn layui-btn-warm"><a href="javascript:$('#form1').submit();"style="font-size: 20px;color: white">加入购物车</a></button>
   		</div>
-			<div class="divForm">
-				<form id="form2" action="<c:url value='/OrderServlet'/>" method="post">
-					<input type="hidden" name="method" value="buyNow"/>
-					<input type="hidden" name="gid" value="${goods.gid}"/>
-				</form>
-				<a id="btn2" href="javascript:$('#form2').submit();"></a>
-			</div>
+		<div class="layui-col" style="padding: 20px">
+			<form id="form2" action="<c:url value='/OrderServlet'/>" method="post">
+				<input type="hidden" name="method" value="buyNow"/>
+				<input type="hidden" name="gid" value="${goods.gid}"/>
+			</form>
+<%--				<a id="btn2" href="javascript:$('#form2').submit();"></a>--%>
+			<button style="width:150px" class="layui-btn layui-btn-warm"><a href="javascript:$('#form2').submit();"style="font-size: 20px;color: white">立即购买</a></button>
+		</div>
+	</div>
 </c:if>
 		</ul>
 	</div>

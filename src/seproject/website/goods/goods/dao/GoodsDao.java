@@ -54,12 +54,6 @@ public class GoodsDao {
 		return goods;
 	}
 
-	public int findGoodsCountByCategory(String cid) throws SQLException {
-		String sql = "select count(*) from t_goods where cid=?";
-		Number cnt = (Number)qr.query(sql, new ScalarHandler(), cid);
-		return cnt == null ? 0 : cnt.intValue();
-	}
-
 	public PageBean<Goods> findByCategory(String cid, int pc) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		exprList.add(new Expression("cid", "=", cid));

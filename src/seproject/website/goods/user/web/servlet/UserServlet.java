@@ -37,17 +37,11 @@ public class UserServlet extends BaseServlet {
 
 	public String ajaxValidateEmail(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*
-		 * 1. 获取Email
-		 */
+
 		String email = req.getParameter("email");
-		/*
-		 * 2. 通过service得到校验结果
-		 */
+
 		boolean b = userService.ajaxValidateEmail(email);
-		/*
-		 * 3. 发给客户端
-		 */
+
 		resp.getWriter().print(b);
 		return null;
 	}
@@ -72,13 +66,9 @@ public class UserServlet extends BaseServlet {
 
 	public String regist(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*
-		 * 1. 封装表单数据到User对象
-		 */
+
 		User formUser = CommonUtils.toBean(req.getParameterMap(), User.class);
-		/*
-		 * 2. 校验之, 如果校验失败，保存错误信息，返回到regist.jsp显示
-		 */
+
 		Map<String,String> errors = validateRegist(formUser, req.getSession());
 		if(errors.size() > 0) {
 			req.setAttribute("form", formUser);
