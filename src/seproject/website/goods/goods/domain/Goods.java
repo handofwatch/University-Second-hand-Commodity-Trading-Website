@@ -2,7 +2,6 @@ package seproject.website.goods.goods.domain;
 
 import seproject.website.goods.category.domain.Category;
 import seproject.website.goods.user.domain.User;
-
 public class Goods {
 	private String gid;//主键
 	private String gname;//图名

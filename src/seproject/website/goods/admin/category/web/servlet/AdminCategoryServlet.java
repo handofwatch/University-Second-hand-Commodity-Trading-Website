@@ -1,11 +1,9 @@
 package seproject.website.goods.admin.category.web.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.goods.service.GoodsService;
 import seproject.website.goods.category.domain.Category;

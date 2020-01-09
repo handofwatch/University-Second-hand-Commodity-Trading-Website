@@ -1,7 +1,6 @@
 package seproject.website.goods.order.domain;
 
 import java.util.List;
-
 import seproject.website.goods.user.domain.User;
 
 public class Order {

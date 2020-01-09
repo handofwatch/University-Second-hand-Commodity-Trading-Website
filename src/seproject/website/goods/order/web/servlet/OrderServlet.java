@@ -4,11 +4,9 @@ package seproject.website.goods.order.web.servlet;
 
 import java.io.IOException;
 import java.util.*;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.cart.domain.CartItem;
 import seproject.website.goods.cart.service.CartItemService;

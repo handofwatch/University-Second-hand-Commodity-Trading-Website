@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.Properties;
-
 import javax.mail.MessagingException;
 import javax.mail.Session;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.user.dao.UserDao;
 import seproject.website.goods.user.domain.User;

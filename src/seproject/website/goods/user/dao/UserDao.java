@@ -1,11 +1,9 @@
 package seproject.website.goods.user.dao;
 
 import java.sql.SQLException;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-
 import seproject.website.goods.user.domain.User;
 import cn.itcast.jdbc.TxQueryRunner;
 

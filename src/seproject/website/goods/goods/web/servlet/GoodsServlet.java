@@ -1,5 +1,4 @@
 package seproject.website.goods.goods.web.servlet;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +11,9 @@ import cn.itcast.servlet.BaseServlet;
 import seproject.website.goods.user.domain.User;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-
 public class GoodsServlet extends BaseServlet {
     private GoodsService goodsService = new GoodsService();
     private CategoryService categoryService = new CategoryService();
@@ -69,10 +69,13 @@ public class GoodsServlet extends BaseServlet {
 
         int pc = getPc(req);
 
+        req.setCharacterEncoding("gb2312");
+
         String url = getUrl(req);
+        String gname = req.getParameter("gname");
+        //String gname = new String(req.getParameter("gname").getBytes("8859_1"), "UTF-8");
 
-        String gname ="枕头";//req.getParameter("gname");
-
+        System.out.println(gname);
         PageBean<Goods> pb = goodsService.findByGname(gname, pc);
 
         pb.setUrl(url);

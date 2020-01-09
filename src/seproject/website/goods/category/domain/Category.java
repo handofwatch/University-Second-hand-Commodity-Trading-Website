@@ -1,5 +1,4 @@
 package seproject.website.goods.category.domain;
-
 public class Category {
 	private String cid;// 主键
 	private String cname;// 分类名称

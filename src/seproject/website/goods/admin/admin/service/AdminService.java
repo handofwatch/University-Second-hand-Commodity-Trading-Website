@@ -1,7 +1,6 @@
 package seproject.website.goods.admin.admin.service;
 
 import java.sql.SQLException;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.admin.admin.dao.AdminDao;
 import seproject.website.goods.admin.admin.domain.Admin;

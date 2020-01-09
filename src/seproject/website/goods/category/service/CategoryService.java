@@ -2,7 +2,6 @@ package seproject.website.goods.category.service;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import seproject.website.goods.category.dao.CategoryDao;
 import seproject.website.goods.category.domain.Category;
 

@@ -1,7 +1,6 @@
 package seproject.website.goods.order.domain;
 
 import seproject.website.goods.goods.domain.Goods;
-
 public class OrderItem {
 	private String orderItemId;//主键
 	private double price;//小计

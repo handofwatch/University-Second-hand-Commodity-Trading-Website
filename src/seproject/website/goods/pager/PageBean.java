@@ -1,7 +1,6 @@
 package seproject.website.goods.pager;
 
 import java.util.List;
-
 public class PageBean<T> {
 	private int pc;//当前页码
 	private int tr;//总记录数

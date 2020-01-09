@@ -4,11 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.cart.domain.CartItem;

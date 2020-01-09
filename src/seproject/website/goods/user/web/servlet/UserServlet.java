@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import cn.itcast.commons.CommonUtils;
 import seproject.website.goods.user.domain.User;
 import seproject.website.goods.user.service.UserService;

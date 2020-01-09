@@ -10,7 +10,6 @@ import seproject.website.goods.category.domain.Category;
 import seproject.website.goods.category.service.CategoryService;
 import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.goods.service.GoodsService;
-
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -1,10 +1,5 @@
 package seproject.website.goods.user.domain;
 
-/*
- * 属性哪里来
- * 1. t_user表：因为我们需要把t_user表查询出的数据封装到User对象中
- * 2. 该模块所有表单：因为我们需要把表单数据封装到User对象中
- */
 public class User {
 	// 对应数据库表
 	private String uid;//主键

@@ -1,8 +1,6 @@
 package seproject.website.goods.goods.service;
 
 import java.sql.SQLException;
-import java.util.List;
-
 import seproject.website.goods.goods.dao.GoodsDao;
 import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.pager.PageBean;

@@ -1,5 +1,4 @@
 package seproject.website.goods.pager;
-
 public class Expression {
 	private String name;
 	private String operator;

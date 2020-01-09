@@ -1,7 +1,6 @@
 package seproject.website.goods.cart.domain;
 
 import java.math.BigDecimal;
-
 import seproject.website.goods.goods.domain.Goods;
 import seproject.website.goods.user.domain.User;
 

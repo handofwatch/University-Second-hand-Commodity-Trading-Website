@@ -1,5 +1,4 @@
 package seproject.website.goods.admin.admin.domain;
-
 public class Admin {
 	private String adminId;//主键
 	private String adminname;//管理员的登录名
