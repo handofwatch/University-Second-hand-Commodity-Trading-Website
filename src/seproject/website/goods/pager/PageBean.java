@@ -2,12 +2,6 @@ package seproject.website.goods.pager;
 
 import java.util.List;
 
-/**
- * 分页Bean，它会在各层之间传递！
- * @author qdmmy6
- *
- * @param <T>
- */
 public class PageBean<T> {
 	private int pc;//当前页码
 	private int tr;//总记录数

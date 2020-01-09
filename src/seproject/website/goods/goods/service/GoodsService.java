@@ -10,10 +10,7 @@ import seproject.website.goods.pager.PageBean;
 public class GoodsService {
 	private GoodsDao goodsDao = new GoodsDao();
 	
-	/**
-	 * 删除图书
-	 * @param gid
-	 */
+
 	public void delete(String gid) {
 		try {
 			goodsDao.delete(gid);
@@ -22,10 +19,7 @@ public class GoodsService {
 		}
 	}
 	
-	/**
-	 * 修改图书
-	 * @param goods
-	 */
+
 	public void edit(Goods goods) {
 		try {
 			goodsDao.edit(goods);
@@ -34,11 +28,7 @@ public class GoodsService {
 		}
 	}
 	
-	/**
-	 * 返回当前分类下图书个数
-	 * @param cid
-	 * @return
-	 */
+
 	public int findGoodsCountByCategory(String cid) {
 		try {
 			return goodsDao.findGoodsCountByCategory(cid);
@@ -47,11 +37,7 @@ public class GoodsService {
 		}
 	}
 	
-	/**
-	 * 加载图书
-	 * @param gid
-	 * @return
-	 */
+
 	public Goods load(String gid) {
 		try {
 			return goodsDao.findByGid(gid);
@@ -60,12 +46,7 @@ public class GoodsService {
 		}
 	}
 	
-	/**
-	 * 按分类查
-	 * @param cid
-	 * @param pc
-	 * @return
-	 */
+
 	public PageBean<Goods> findByCategory(String cid, int pc) {
 		try {
 			return goodsDao.findByCategory(cid, pc);
@@ -73,13 +54,7 @@ public class GoodsService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * 按书名查
-	 * @param gname
-	 * @param pc
-	 * @return
-	 */
+
 	public PageBean<Goods> findByGname(String gname, int pc) {
 		try {
 			return goodsDao.findByGname(gname, pc);
@@ -88,10 +63,6 @@ public class GoodsService {
 		}
 	}
 
-	/**
-	 * 添加图书
-	 * @param goods
-	 */
 	public void add(Goods goods) {
 		try {
 			goodsDao.add(goods);

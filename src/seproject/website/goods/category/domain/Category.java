@@ -1,7 +1,5 @@
 package seproject.website.goods.category.domain;
 
-import java.util.List;
-
 public class Category {
 	private String cid;// 主键
 	private String cname;// 分类名称

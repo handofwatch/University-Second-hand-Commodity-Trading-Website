@@ -10,12 +10,7 @@ import cn.itcast.jdbc.JdbcUtils;
 
 public class OrderService {
 	private OrderDao orderDao = new OrderDao();
-	
-	/**
-	 * 修改订单状态
-	 * @param orderItemId
-	 * @param status
-	 */
+
 	public void updateStatus(String orderItemId, int status) {
 		try {
 			orderDao.updateStatus(orderItemId, status);
@@ -23,12 +18,7 @@ public class OrderService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * 查询订单状态
-	 * @param oid
-	 * @return
-	 */
+
 	public int findStatus(String oid) {
 		try {
 			return orderDao.findStatus(oid);
@@ -36,12 +26,7 @@ public class OrderService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * 加载订单
-	 * @param oid
-	 * @return
-	 */
+
 	public Order load(String oid) {
 		try {
 			JdbcUtils.beginTransaction();
@@ -55,11 +40,7 @@ public class OrderService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * 生成订单
-	 * @param order
-	 */
+
 	public void createOrder(Order order) {
 		try {
 			JdbcUtils.beginTransaction();
@@ -72,13 +53,7 @@ public class OrderService {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * 我的订单
-	 * @param uid
-	 * @param pc
-	 * @return
-	 */
+
 	public PageBean<Order> myOrders(String uid, int pc) {
 		try {
 			JdbcUtils.beginTransaction();
@@ -93,31 +68,7 @@ public class OrderService {
 		}
 	}
 	
-//	/**要重写
-//	 * 按状态查询
-//	 * @param status
-//	 * @param pc
-//	 * @return
-//	 */
-//	public PageBean<Order> findByStatus(int status, int pc) {
-//		try {
-//			JdbcUtils.beginTransaction();
-//			PageBean<Order> pb = orderDao.findByStatus(status, pc);
-//			JdbcUtils.commitTransaction();
-//			return pb;
-//		} catch (SQLException e) {
-//			try {
-//				JdbcUtils.rollbackTransaction();
-//			} catch (SQLException e1) {}
-//			throw new RuntimeException(e);
-//		}
-//	}
-	
-	/**
-	 * 查询所有
-	 * @param pc
-	 * @return
-	 */
+
 	public PageBean<Order> findAll(int pc) {
 		try {
 			JdbcUtils.beginTransaction();

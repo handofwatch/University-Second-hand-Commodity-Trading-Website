@@ -12,10 +12,7 @@ public class CartItem {
 
 	// 添加小计方法
 	public double getSubtotal() {
-		/*
-		 * 使用BigDecimal不会有误差
-		 * 要求必须使用String类型构造器
-		 */
+
 		BigDecimal b1 = new BigDecimal(goods.getPrice() + "");
 		BigDecimal b2 = new BigDecimal(1 + "");
 		BigDecimal b3 = b1.multiply(b2);
@@ -47,6 +44,5 @@ public class CartItem {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(2.0-1.1);//0.8999999999999999
-	}//?
-}
+		System.out.println(2.0-1.1);
+}}

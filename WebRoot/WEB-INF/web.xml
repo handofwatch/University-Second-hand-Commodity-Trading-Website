@@ -61,10 +61,6 @@
     <servlet-class>seproject.website.goods.admin.goods.web.servlet.AdminGoodsServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AdminAddGoodsServlet</servlet-name>
-    <servlet-class>seproject.website.goods.admin.goods.web.servlet.AdminAddGoodsServlet</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>AdminOrderServlet</servlet-name>
     <servlet-class>seproject.website.goods.admin.web.servlet.AdminOrderServlet</servlet-class>
   </servlet>
@@ -111,10 +107,6 @@
   <servlet-mapping>
     <servlet-name>AdminGoodsServlet</servlet-name>
     <url-pattern>/admin/AdminGoodsServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminAddGoodsServlet</servlet-name>
-    <url-pattern>/admin/AdminAddGoodsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AdminOrderServlet</servlet-name>

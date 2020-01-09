@@ -1,10 +1,5 @@
 package seproject.website.goods.user.domain;
 
-/**
- * 用户模块实体类
- * @author qdmmy6
- *
- */
 /*
  * 属性哪里来
  * 1. t_user表：因为我们需要把t_user表查询出的数据封装到User对象中
@@ -17,7 +12,7 @@ public class User {
 	private String loginpass;//登录密码
 	private String email;//邮箱
 	private boolean status;//状态，true表示已激活，或者未激活
-	private String activationCode;//激活码，它是唯一值！即每个用户的激活码是不同的！
+	private String activationCode;//激活码
 	
 	// 注册表单
 	private String reloginpass;//确认密码

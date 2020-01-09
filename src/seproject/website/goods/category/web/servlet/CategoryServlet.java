@@ -11,17 +11,9 @@ import seproject.website.goods.category.domain.Category;
 import seproject.website.goods.category.service.CategoryService;
 import cn.itcast.servlet.BaseServlet;
 
-/**
- * 分类模块WEB层
- * @author qdmmy6
- *
- */
 public class CategoryServlet extends BaseServlet {
 	private CategoryService categoryService = new CategoryService();	
-	
-	/**
-	 * 查询所有分类
-	 */
+
 	public String findAll(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		/*

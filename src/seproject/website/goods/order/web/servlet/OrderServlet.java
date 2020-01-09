@@ -26,11 +26,6 @@ public class OrderServlet extends BaseServlet {
 	private CartItemService cartItemService = new CartItemService();
 	private GoodsService goodsService = new GoodsService();
 
-	/**
-	 * 获取当前页码
-	 * @param req
-	 * @return
-	 */
 	private int getPc(HttpServletRequest req) {
 		int pc = 1;
 		String param = req.getParameter("pc");
@@ -41,16 +36,7 @@ public class OrderServlet extends BaseServlet {
 		}
 		return pc;
 	}
-	
-	/**
-	 * 截取url，页面中的分页导航中需要使用它做为超链接的目标！
-	 * @param req
-	 * @return
-	 */
-	/*
-	 * http://localhost:8080/goods/BookServlet?methed=findByCategory&cid=xxx&pc=3
-	 * /goods/GoodsServlet + methed=findByCategory&cid=xxx&pc=3
-	 */
+
 	private String getUrl(HttpServletRequest req) {
 		String url = req.getRequestURI() + "?" + req.getQueryString();
 		/*
@@ -62,17 +48,7 @@ public class OrderServlet extends BaseServlet {
 		}
 		return url;
 	}
-	
 
-
-	/**
-	 * 支付
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
 	public String payment(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String oid = req.getParameter("oid");
@@ -80,9 +56,7 @@ public class OrderServlet extends BaseServlet {
 		for(OrderItem orderitem : order.getOrderItemList() ) {
 			String itemId = orderitem.getOrderItemId();
 			String gid = orderService.findGid(orderitem.getOrderItemId());
-			/*
-			 * 校验订单状态
-			 */
+
 			int status = orderService.findStatus(itemId);
 			if (status != 1) {
 				req.setAttribute("code", "error");
@@ -108,15 +82,7 @@ public class OrderServlet extends BaseServlet {
 
 		return "买家将钱寄存在网站";
 	}
-	
-	/**
-	 * 取消订单
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	public String cancel(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String itemId = req.getParameter("orderItemId");
@@ -136,23 +102,12 @@ public class OrderServlet extends BaseServlet {
 		req.setAttribute("msg", "您的订单已取消！");
 		return "f:/jsps/msg.jsp";		
 	}
-	
-	/**
-	 * 确认收货
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	public String confirm(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String itemId = req.getParameter("orderItemId");
 		String gid = orderService.findGid(itemId);
-		/*
-		 * 校验订单状态
-		 */
-		System.out.println(itemId);
+
 		int status = orderService.findStatus(itemId);
 		System.out.println(status);
 		if(status != 3) {
@@ -177,15 +132,7 @@ public class OrderServlet extends BaseServlet {
 	private String giveSellerMoney(){
 		return "给卖家转买家的钱";
 	}
-	
-	/**
-	 * 加载订单
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	public String load(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String oid = req.getParameter("oid");
@@ -195,25 +142,13 @@ public class OrderServlet extends BaseServlet {
 		req.setAttribute("btn", btn);
 		return "/jsps/order/desc.jsp";
 	}
-	
-	/**
-	 * 生成订单
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	public String createOrder(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*
-		 * 1. 获取所有购物车条目的id，查询之
-		 */
+
 		String cartItemIds = req.getParameter("cartitemids");
 		List<Goods> GoodsList = cartItemService.loadCartItems(cartItemIds);
-		/*
-		 * 2. 创建Order
-		 */
+
 		Order order = new Order();
 		order.setOid(CommonUtils.uuid());//设置主键
 		order.setOrdertime(String.format("%tF %<tT", new Date()));//下单时间
@@ -228,11 +163,7 @@ public class OrderServlet extends BaseServlet {
 			total = goods.getPrice();
 		}
 		order.setTotal(total);//设置总计
-		
-		/*
-		 * 3. 创建List<OrderItem>
-		 * 一个CartItem对应一个OrderItem
-		 */
+
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		for(Goods goods : GoodsList) {
 			OrderItem orderItem = new OrderItem();
@@ -249,50 +180,28 @@ public class OrderServlet extends BaseServlet {
 		}
 		order.setOrderItemList(orderItemList);
 		
-		/*
-		 * 4. 调用service完成添加
-		 */
+
 		orderService.createOrder(order);
 		
 		// 删除购物车条目
 		cartItemService.batchDelete(cartItemIds);
-		/*
-		 * 5. 保存订单，转发到ordersucc.jsp
-		 */
+
 		req.setAttribute("order", order);
 		return "f:/jsps/order/ordersucc.jsp";
 	}
-	
-	/**
-	 * 我的订单
-	 * @param req
-	 * @param resp
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	public String myOrders(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*
-		 * 1. 得到pc：如果页面传递，使用页面的，如果没传，pc=1
-		 */
+
 		int pc = getPc(req);
-		/*
-		 * 2. 得到url：...
-		 */
+
 		String url = getUrl(req);
-		/*
-		 * 3. 从当前session中获取User
-		 */
+
 		User user = (User)req.getSession().getAttribute("sessionUser");
 		
-		/*
-		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
-		 */
+
 		PageBean<Order> pb = orderService.myOrders(user.getUid(), pc);
-		/*
-		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
-		 */
+
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
 		return "f:/jsps/order/list.jsp";

@@ -6,7 +6,7 @@ import seproject.website.goods.user.domain.User;
 public class Goods {
 	private String gid;//主键
 	private String gname;//图名
-	private int gstatus;//商品是否卖出
+	private int gstatus;//商品状态，与订单项状态相一致
 	private String image_w2;
 	private Category category;//所属分类
 	private String image_w;//大图路径
